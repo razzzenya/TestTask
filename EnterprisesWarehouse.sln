@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnterpriseWarehouse.Domain"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnterpriseWarehouse.Wasm", "EnterpriseWarehouse.Wasm\EnterpriseWarehouse.Wasm.csproj", "{F10D04B3-CA38-4952-93DA-9F722995C018}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0B9817E5-FE65-4359-BC45-491EC513D8B9}"
+	ProjectSection(SolutionItems) = preProject
+		DB.dump = DB.dump
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
