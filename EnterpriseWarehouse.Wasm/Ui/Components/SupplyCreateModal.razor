@@ -1,0 +1,121 @@
+﻿@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Modal @ref="SupplyModal">
+    <Alert Color="Color.Danger" @bind-Visible="@IsAlertVisible">
+        <AlertMessage>Список товаров или организаций пуст!</AlertMessage>
+    </Alert>
+    <ModalContent Centered>
+        <Form>
+            <ModalHeader>
+                <ModalTitle>Новая поставка</ModalTitle>
+                <CloseButton Clicked="CloseSupplyModalAsync" />
+            </ModalHeader>
+
+            <ModalBody>
+                <Field>
+                    <FieldLabel>Выберите товар</FieldLabel>
+                    <Select TValue="int" @bind-SelectedValue="NewSupply.ProductId">
+                        @if (Products != null)
+                        {
+                            @foreach (var product in Products)
+                            {
+                                <SelectItem Value="@product.Id">@($"{product.Id} | {product.Name} | {product.Code}")</SelectItem>
+                            }
+                        }
+                    </Select>
+                </Field>
+                <Field>
+                    <FieldLabel>Выберите организацию</FieldLabel>
+                    <Select TValue="int" @bind-SelectedValue="NewSupply.OrganizationId">
+                        @if (Organizations != null)
+                        {
+                            @foreach (var organization in Organizations)
+                            {
+                                <SelectItem Value="@organization.Id">@($"{organization.Id} | {organization.Name} | {organization.Address}")</SelectItem>
+                            }
+                        }
+                    </Select>
+                </Field>
+                <Field>
+                    <FieldLabel>Дата поставки</FieldLabel>
+                    <InputDate @bind-Value="NewSupply.SupplyDate" />
+                </Field>
+                <Field>
+                    <FieldLabel>Количество товара</FieldLabel>
+                    <InputNumber @bind-Value="NewSupply.Quantity" />
+                </Field>
+            </ModalBody>
+
+            <ModalFooter>
+                <Button Color="Color.Secondary" Clicked="CloseSupplyModalAsync">Отмена</Button>
+                <Button Color="Color.Primary" Clicked="CreateSupplyAsync">Создать</Button>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+
+@code {
+    [Parameter]
+    public EventCallback OnSupplyAdded { get; set; }
+
+    private Modal SupplyModal { get; set; } = new();
+    private SupplyCreateDTO NewSupply { get; set; } = new();
+    private IEnumerable<ProductDTO>? Products { get; set; }
+    private IEnumerable<OrganizationDTO>? Organizations { get; set; }
+    private bool IsAlertVisible { get; set; } = false;
+
+    public async Task Show()
+    {
+        await LoadProductsAsync();
+        await LoadOrganizationsAsync();
+        NewSupply.SupplyDate = DateTime.Now;
+        await SupplyModal.Show();
+    }
+
+    private async Task CloseSupplyModalAsync()
+    {
+        IsAlertVisible = false;
+        NewSupply = new();
+        await SupplyModal.Hide();
+    }
+
+    private async Task CreateSupplyAsync()
+    {
+        try
+        {
+            await EnterpriseWarehouseApi.CreateSupply(NewSupply);
+            await CloseSupplyModalAsync();
+            await OnSupplyAdded.InvokeAsync();
+        }
+        catch
+        {
+            IsAlertVisible = true;
+        }
+    }
+
+    private async Task LoadProductsAsync()
+    {
+        Products = await EnterpriseWarehouseApi.GetAllProducts();
+        if (Products.FirstOrDefault() is null)
+        {
+            NewSupply.ProductId = 0;
+        }
+        else
+        {
+            NewSupply.ProductId = Products.FirstOrDefault()!.Id;
+        }
+    }
+
+    private async Task LoadOrganizationsAsync()
+    {
+        Organizations = await EnterpriseWarehouseApi.GetAllOrganizations();
+        if (Organizations.FirstOrDefault() is null)
+        {
+            NewSupply.OrganizationId = 0;
+        }
+        else
+        {
+            NewSupply.OrganizationId = Organizations.FirstOrDefault()!.Id;
+        }
+    }
+}

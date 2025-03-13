@@ -1,0 +1,80 @@
+﻿@page "/get-nearest-organizations"
+@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Card>
+    <CardHeader>
+        <Row Class="justify-content-between">
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <h4>Ближайшие организации между собой</h4>
+            </Column>
+        </Row>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="OrganizationDistanceDTO"
+                  Data="PagedOrganizations"
+                  Responsive
+                  Striped
+                  PageSize="20">
+            <DataGridColumns>
+                <DataGridColumn TItem="OrganizationDistanceDTO"
+                                Field="@nameof(OrganizationDistanceDTO.Name)"
+                                Caption="Название организации">
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationDistanceDTO"
+                                Field="@nameof(OrganizationDistanceDTO.NearestOrganization)"
+                                Caption="Близжайшая организация">
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationDistanceDTO"
+                                Field="@nameof(OrganizationDistanceDTO.Distance)"
+                                Caption="Расстояние">
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+        <nav>
+            <ul class="pagination">
+                @for (int i = 1; i <= TotalPages; i++)
+                {
+                    var pageNum = i;
+                    <li class="page-item @(i == CurrentPage ? "active" : "")">
+                        <a class="page-link" @onclick="() => ChangePage(pageNum)">@pageNum</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </CardBody>
+</Card>
+
+
+@code {
+    private IEnumerable<OrganizationDistanceDTO> Organizations { get; set; } = [];
+    private IEnumerable<OrganizationDistanceDTO> PagedOrganizations { get; set; } = [];
+    private int CurrentPage { get; set; } = 1;
+    private int PageSize { get; set; } = 20;
+    private int TotalPages => (int)Math.Ceiling((double)Organizations.Count() / PageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshOrganizationCollection();
+        await base.OnInitializedAsync();
+    }
+    private void UpdatePagedOrganizations()
+    {
+        PagedOrganizations = Organizations
+            .Skip((CurrentPage - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
+    }
+
+    private void ChangePage(int page)
+    {
+        CurrentPage = page;
+        UpdatePagedOrganizations();
+    }
+
+    private async Task RefreshOrganizationCollection()
+    {
+        Organizations = await EnterpriseWarehouseApi.GetNearestOrganizations();
+        UpdatePagedOrganizations();
+    }
+}
+

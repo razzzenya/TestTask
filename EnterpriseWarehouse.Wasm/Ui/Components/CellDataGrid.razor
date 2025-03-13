@@ -1,0 +1,142 @@
+﻿@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Card>
+    <CardHeader>
+        <Row Class="justify-content-between">
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <h4>Ячейки</h4>
+            </Column>
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <Button Color="Color.Primary" Clicked="OpenCreateModal">
+                    Создать
+                </Button>
+            </Column>
+        </Row>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="CellDTO"
+                  Data="PagedCells"
+                  Responsive
+                  Striped
+                  PageSize="20">
+            <DataGridColumns>
+                <DataGridColumn Width="150px"
+                                TItem="CellDTO"
+                                Field="@nameof(CellDTO.Id)"
+                                Caption="Действия">
+                    <DisplayTemplate>
+                        <Dropdown>
+                            <DropdownToggle Color="Color.Primary">
+                                Действия
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem Clicked="() => OpenEditPageAsync(context)">
+                                    Редактировать
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => DeleteCellAsync(context)">
+                                    Удалить
+                                </DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="CellDTO"
+                                Field="@nameof(CellDTO.Id)"
+                                Caption="Идентификатор ячейки">
+                </DataGridColumn>
+                <DataGridColumn TItem="CellDTO" Caption="Идентификатор товара">
+                    <DisplayTemplate>
+                        @context.Product.Id
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="CellDTO" Caption="Название товара">
+                    <DisplayTemplate>
+                        @context.Product.Name
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="CellDTO"
+                                Field="@nameof(CellDTO.Quantity)"
+                                Caption="Количество товара">
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+        <nav>
+            <ul class="pagination">
+                @for (int i = 1; i <= TotalPages; i++)
+                {
+                    var pageNum = i;
+                    <li class="page-item @(i == CurrentPage ? "active" : "")">
+                        <a class="page-link" @onclick="() => ChangePage(pageNum)">@pageNum</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </CardBody>
+</Card>
+
+<CellCreateModal @ref="CellCreateModal" OnCellAdded="@HandleCellListChanged" />
+<CellUpdateModal @ref="CellUpdateModal" CellToUpdate="SelectedCell" Id="SelectedId" OnCellUpdated="@HandleCellListChanged" />
+
+
+@code {
+    private IEnumerable<CellDTO> Cells { get; set; } = [];
+    private IEnumerable<CellDTO> PagedCells { get; set; } = [];
+    private int SelectedId { get; set; }
+    private CellCreateDTO? SelectedCell { get; set; }
+    private CellCreateModal CellCreateModal { get; set; } = new();
+    private CellUpdateModal CellUpdateModal { get; set; } = new();
+    private int CurrentPage { get; set; } = 1;
+    private int PageSize { get; set; } = 20;
+    private int TotalPages => (int)Math.Ceiling((double)Cells.Count() / PageSize);
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshCellsCollection();
+        await base.OnInitializedAsync();
+    }
+
+    private async Task OpenEditPageAsync(CellDTO context)
+    {
+        SelectedId = context.Id;
+        SelectedCell = new()
+            {
+                ProductId = context.Product.Id,
+                Quantity = context.Quantity
+            };
+        await CellUpdateModal.Show();
+    }
+
+    private async Task DeleteCellAsync(CellDTO context)
+    {
+        await EnterpriseWarehouseApi.DeleteCell(context.Id);
+        await RefreshCellsCollection();
+    }
+
+    private async Task HandleCellListChanged()
+    {
+        await RefreshCellsCollection();
+    }
+
+    private async Task OpenCreateModal() => await CellCreateModal.Show();
+
+    private void UpdatePagedCells()
+    {
+        PagedCells = Cells
+            .Skip((CurrentPage - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
+    }
+
+    private void ChangePage(int page)
+    {
+        CurrentPage = page;
+        UpdatePagedCells();
+    }
+
+    private async Task RefreshCellsCollection()
+    {
+        Cells = await EnterpriseWarehouseApi.GetAllCells();
+        UpdatePagedCells();
+    }
+}

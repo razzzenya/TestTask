@@ -1,0 +1,160 @@
+﻿@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Card>
+    <CardHeader>
+        <Row Class="justify-content-between">
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <h4>Поставки</h4>
+            </Column>
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <Button Color="Color.Primary" Clicked="OpenCreateModal">
+                    Создать
+                </Button>
+            </Column>
+        </Row>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="SupplyDTO"
+                  Data="PagedSupplies"
+                  Responsive
+                  Striped
+                  PageSize="20">
+            <DataGridColumns>
+                <DataGridColumn Width="150px"
+                                TItem="SupplyDTO"
+                                Field="@nameof(SupplyDTO.Id)"
+                                Caption="Действия">
+                    <DisplayTemplate>
+                        <Dropdown>
+                            <DropdownToggle Color="Color.Primary">
+                                Действия
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem Clicked="() => OpenEditPageAsync(context)">
+                                    Редактировать
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => DeleteSupplyAsync(context)">
+                                    Удалить
+                                </DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="SupplyDTO"
+                                Field="@nameof(SupplyDTO.Id)"
+                                Caption="Идентификатор поставки">
+                </DataGridColumn>
+                <DataGridColumn TItem="SupplyDTO" Caption="Идентификатор товара">
+                    <DisplayTemplate>
+                        @context.Product.Id
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="SupplyDTO" Caption="Название товара">
+                    <DisplayTemplate>
+                        @context.Product.Name
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="SupplyDTO" Caption="Идентификатор организации">
+                    <DisplayTemplate>
+                        @context.Organization.Id
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="SupplyDTO" Caption="Название организации">
+                    <DisplayTemplate>
+                        @context.Organization.Name
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="SupplyDTO"
+                                Field="@nameof(SupplyDTO.SupplyDate)"
+                                Caption="Дата поставки">
+                    <DisplayTemplate>
+                        @context.SupplyDate.ToString("yyyy-MM-dd")
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="SupplyDTO"
+                                Field="@nameof(SupplyDTO.Quantity)"
+                                Caption="Количество товара">
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+        <nav>
+            <ul class="pagination">
+                @for (int i = 1; i <= TotalPages; i++)
+                {
+                    var pageNum = i;
+                    <li class="page-item @(i == CurrentPage ? "active" : "")">
+                        <a class="page-link" @onclick="() => ChangePage(pageNum)">@pageNum</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </CardBody>
+</Card>
+
+<SupplyCreateModal @ref="SupplyCreateModal" OnSupplyAdded="@HandleSupplyListChanged" />
+<SupplyUpdateModal @ref="SupplyUpdateModal" SupplyToUpdate="SelectedSupply" Id="SelectedId" OnSupplyUpdated="@HandleSupplyListChanged" />
+
+
+@code {
+    private IEnumerable<SupplyDTO> Supplies { get; set; } = [];
+    private IEnumerable<SupplyDTO> PagedSupplies { get; set; } = [];
+    private int SelectedId { get; set; }
+    private SupplyCreateDTO? SelectedSupply { get; set; }
+    private SupplyCreateModal SupplyCreateModal { get; set; } = new();
+    private SupplyUpdateModal SupplyUpdateModal { get; set; } = new();
+    private int CurrentPage { get; set; } = 1;
+    private int PageSize { get; set; } = 20;
+    private int TotalPages => (int)Math.Ceiling((double)Supplies.Count() / PageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshSuppliesCollection();
+        await base.OnInitializedAsync();
+    }
+
+    private async Task OpenEditPageAsync(SupplyDTO context)
+    {
+        SelectedId = context.Id;
+        SelectedSupply = new()
+            {    
+                ProductId = context.Product.Id,
+                OrganizationId = context.Organization.Id,
+                SupplyDate = context.SupplyDate,
+                Quantity = context.Quantity
+            };
+        await SupplyUpdateModal.Show();
+    }
+
+    private async Task DeleteSupplyAsync(SupplyDTO context)
+    {
+        await EnterpriseWarehouseApi.DeleteSupply(context.Id);
+        await RefreshSuppliesCollection();
+    }
+
+    private async Task HandleSupplyListChanged()
+    {
+        await RefreshSuppliesCollection();
+    }
+
+    private async Task OpenCreateModal() => await SupplyCreateModal.Show();
+
+    private void UpdatePagedSupplies()
+    {
+        PagedSupplies = Supplies
+            .Skip((CurrentPage - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
+    }
+
+    private void ChangePage(int page)
+    {
+        CurrentPage = page;
+        UpdatePagedSupplies();
+    }
+
+    private async Task RefreshSuppliesCollection()
+    {
+        Supplies = await EnterpriseWarehouseApi.GetAllSupplies();
+        UpdatePagedSupplies();
+    }
+}

@@ -1,0 +1,51 @@
+﻿@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Modal @ref="ProductModal">
+    <ModalContent Centered>
+        <Form>
+            <ModalHeader>
+                <ModalTitle>Новый товар</ModalTitle>
+                <CloseButton Clicked="CloseProductModalAsync" />
+            </ModalHeader>
+
+            <ModalBody>
+                <Field>
+                    <FieldLabel>Код товара</FieldLabel>
+                    <InputNumber @bind-Value="NewProduct.Code" />
+                </Field>
+                <Field>
+                    <FieldLabel>Название</FieldLabel>
+                    <TextEdit @bind-Text="@NewProduct.Name" />
+                </Field>
+            </ModalBody>
+
+            <ModalFooter>
+                <Button Color="Color.Secondary" Clicked="CloseProductModalAsync">Отмена</Button>
+                <Button Color="Color.Primary" Clicked="CreateProductAsync">Создать</Button>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+
+@code {
+    [Parameter]
+    public EventCallback OnProductAdded { get; set; }
+
+    private Modal ProductModal { get; set; } = new();
+    private ProductCreateDTO NewProduct { get; set; } = new();
+
+    public async Task Show() => await ProductModal.Show();
+
+    private async Task CloseProductModalAsync()
+    {
+        NewProduct = new();
+        await ProductModal.Hide();
+    }
+    private async Task CreateProductAsync()
+    {
+        await EnterpriseWarehouseApi.CreateProduct(NewProduct);
+        NewProduct = new();
+        await ProductModal.Hide();
+        await OnProductAdded.InvokeAsync();
+    }
+}

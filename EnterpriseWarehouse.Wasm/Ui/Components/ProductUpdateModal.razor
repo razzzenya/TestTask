@@ -1,0 +1,56 @@
+﻿@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Modal @ref="ProductModal">
+    <ModalContent Centered>
+        <Form>
+            <ModalHeader>
+                <ModalTitle>Изменить товар</ModalTitle>
+                <CloseButton Clicked="CloseProductModalAsync" />
+            </ModalHeader>
+
+            <ModalBody>
+                <Field>
+                    <FieldLabel>Код товара</FieldLabel>
+                    @if (ProductToUpdate != null)
+                    {
+                        <InputNumber @bind-Value="ProductToUpdate.Code" />
+                    }
+                </Field>
+                <Field>
+                    <FieldLabel>Название</FieldLabel>
+                    @if (ProductToUpdate != null)
+                    {
+                        <TextEdit @bind-Text="ProductToUpdate.Name" />
+                    }
+                </Field>
+            </ModalBody>
+
+            <ModalFooter>
+                <Button Color="Color.Secondary" Clicked="CloseProductModalAsync">Отмена</Button>
+                <Button Color="Color.Primary" Clicked="UpdateProductAsync">Изменить</Button>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+
+@code {
+    [Parameter]
+    public EventCallback OnProductUpdated { get; set; }
+    [Parameter]
+    public int Id { get; set; }
+    [Parameter]
+    public ProductCreateDTO? ProductToUpdate { get; set; }
+
+    private Modal ProductModal { get; set; } = new();
+
+    public async Task Show() => await ProductModal.Show();
+
+    private async Task CloseProductModalAsync() => await ProductModal.Hide();
+
+    private async Task UpdateProductAsync()
+    {
+        await EnterpriseWarehouseApi.UpdateProduct(Id, ProductToUpdate!);
+        await ProductModal.Hide();
+        await OnProductUpdated.InvokeAsync();
+    }
+}

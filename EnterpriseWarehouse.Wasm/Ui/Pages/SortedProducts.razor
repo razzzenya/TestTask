@@ -1,0 +1,82 @@
+﻿@page "/sorted-products"
+@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Card>
+    <CardHeader>
+        <Row Class="justify-content-between">
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <h4>Товары отсортированные по названию</h4>
+            </Column>
+            <Column ColumnSize="ColumnSize.IsAuto">
+            </Column>
+        </Row>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="ProductDTO"
+                  Data="PagedProducts"
+                  Responsive
+                  Striped
+                  PageSize="20">
+            <DataGridColumns>
+                <DataGridColumn TItem="ProductDTO"
+                                Field="@nameof(ProductDTO.Id)"
+                                Caption="Идентификатор товара">
+                </DataGridColumn>
+                <DataGridColumn TItem="ProductDTO"
+                                Field="@nameof(ProductDTO.Code)"
+                                Caption="Код товара">
+                </DataGridColumn>
+                <DataGridColumn TItem="ProductDTO"
+                                Field="@nameof(ProductDTO.Name)"
+                                Caption="Название">
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+        <nav>
+            <ul class="pagination">
+                @for (int i = 1; i <= TotalPages; i++)
+                {
+                    var pageNum = i;
+                    <li class="page-item @(i == CurrentPage ? "active" : "")">
+                        <a class="page-link" @onclick="() => ChangePage(pageNum)">@pageNum</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </CardBody>
+</Card>
+
+
+@code {
+    private IEnumerable<ProductDTO> Products { get; set; } = [];
+    private IEnumerable<ProductDTO> PagedProducts { get; set; } = [];
+    private int CurrentPage { get; set; } = 1;
+    private int PageSize { get; set; } = 20;
+    private int TotalPages => (int)Math.Ceiling((double)Products.Count() / PageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshProductsCollection();
+        await base.OnInitializedAsync();
+    }
+
+    private void UpdatePagedProducts()
+    {
+        PagedProducts = Products
+            .Skip((CurrentPage - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
+    }
+
+    private void ChangePage(int page)
+    {
+        CurrentPage = page;
+        UpdatePagedProducts();
+    }
+
+    private async Task RefreshProductsCollection()
+    {
+        Products = await EnterpriseWarehouseApi.GetAllProductsSortedByName();
+        UpdatePagedProducts();
+    }
+}

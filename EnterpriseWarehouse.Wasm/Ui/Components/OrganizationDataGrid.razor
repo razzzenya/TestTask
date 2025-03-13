@@ -1,0 +1,140 @@
+﻿@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Card>
+    <CardHeader>
+        <Row Class="justify-content-between">
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <h4>Организации</h4>
+            </Column>
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <Button Color="Color.Primary" Clicked="OpenCreateModal">
+                    Создать
+                </Button>
+            </Column>
+        </Row>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="OrganizationDTO"
+                  Data="PagedOrganizations"
+                  Responsive
+                  Striped
+                  PageSize="20">
+            <DataGridColumns>
+                <DataGridColumn Width="150px"
+                                TItem="OrganizationDTO"
+                                Field="@nameof(OrganizationDTO.Id)"
+                                Caption="Действия">
+                    <DisplayTemplate>
+                        <Dropdown>
+                            <DropdownToggle Color="Color.Primary">
+                                Действия
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem Clicked="() => OpenEditPageAsync(context)">
+                                    Редактировать
+                                </DropdownItem>
+                                <DropdownItem Clicked="() => DeleteOrganizationAsync(context)">
+                                    Удалить
+                                </DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                    </DisplayTemplate>
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationDTO"
+                                Field="@nameof(OrganizationDTO.Id)"
+                                Caption="Идентификатор организации">
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationDTO"
+                                Field="@nameof(OrganizationDTO.Name)"
+                                Caption="Название">
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationDTO"
+                                Field="@nameof(OrganizationDTO.Address)"
+                                Caption="Адрес">
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationDTO"
+                                Field="@nameof(OrganizationDTO.Geometry)"
+                                Caption="Геометрия">
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+        <nav>
+            <ul class="pagination">
+                @for (int i = 1; i <= TotalPages; i++)
+                {
+                    var pageNum = i;
+                    <li class="page-item @(i == CurrentPage ? "active" : "")">
+                        <a class="page-link" @onclick="() => ChangePage(pageNum)">@pageNum</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </CardBody>
+</Card>
+
+<OrganizationCreateModal @ref="OrganizationCreateModal" OnOrganizationAdded="@HandleOrganizationListChanged" />
+<OrganizationUpdateModal @ref="OrganizationUpdateModal" OrganizationToUpdate="SelectedOrganization" Id="SelectedId" OnOrganizationUpdated="@HandleOrganizationListChanged" />
+
+
+@code {
+    private IEnumerable<OrganizationDTO> Organizations { get; set; } = [];
+    private IEnumerable<OrganizationDTO> PagedOrganizations { get; set; } = [];
+    private int SelectedId { get; set; }
+    private OrganizationCreateDTO? SelectedOrganization { get; set; }
+    private OrganizationCreateModal OrganizationCreateModal { get; set; } = new();
+    private OrganizationUpdateModal OrganizationUpdateModal { get; set; } = new();
+    private int CurrentPage { get; set; } = 1;
+    private int PageSize { get; set; } = 20;
+    private int TotalPages => (int)Math.Ceiling((double)Organizations.Count() / PageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshOrganizationCollection();
+        await base.OnInitializedAsync();
+    }
+
+    private async Task OpenEditPageAsync(OrganizationDTO context)
+    {
+        SelectedId = context.Id;
+        SelectedOrganization = new()
+            {
+                Name = context.Name,
+                Address = context.Address,
+                Geometry = context.Geometry
+            };
+        await OrganizationUpdateModal.Show();
+    }
+
+    private async Task DeleteOrganizationAsync(OrganizationDTO context)
+    {
+        await EnterpriseWarehouseApi.DeleteOrganization(context.Id);
+        await RefreshOrganizationCollection();
+    }
+
+    private async Task HandleOrganizationListChanged()
+    {
+        await RefreshOrganizationCollection();
+    }
+
+    private async Task OpenCreateModal() => await OrganizationCreateModal.Show();
+
+    private void UpdatePagedOrganizations()
+    {
+        PagedOrganizations = Organizations
+            .Skip((CurrentPage - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
+    }
+
+    private void ChangePage(int page)
+    {
+        CurrentPage = page;
+        UpdatePagedOrganizations();
+    }
+
+    private async Task RefreshOrganizationCollection()
+    {
+        Organizations = await EnterpriseWarehouseApi.GetAllOrganizations();
+        UpdatePagedOrganizations();
+    }
+}

@@ -1,0 +1,63 @@
+﻿@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Modal @ref="OrganizationModal">
+    <ModalContent Centered>
+        <Form>
+            <ModalHeader>
+                <ModalTitle>Изменить товар</ModalTitle>
+                <CloseButton Clicked="CloseOrganizationModalAsync" />
+            </ModalHeader>
+
+            <ModalBody>
+                <Field>
+                    <FieldLabel>Название</FieldLabel>
+                    @if (OrganizationToUpdate != null)
+                    {
+                        <TextEdit @bind-Text="OrganizationToUpdate.Name" />
+                    }
+                </Field>
+                <Field>
+                    <FieldLabel>Адрес</FieldLabel>
+                    @if (OrganizationToUpdate != null)
+                    {
+                        <TextEdit @bind-Text="OrganizationToUpdate.Address" />
+                    }
+                </Field>
+                <Field>
+                    <FieldLabel>Геометрия</FieldLabel>
+                    @if (OrganizationToUpdate != null)
+                    {
+                        <TextEdit @bind-Text="OrganizationToUpdate.Geometry" />
+                    }
+                </Field>
+            </ModalBody>
+
+            <ModalFooter>
+                <Button Color="Color.Secondary" Clicked="CloseOrganizationModalAsync">Отмена</Button>
+                <Button Color="Color.Primary" Clicked="UpdateOrganizationAsync">Изменить</Button>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+
+@code {
+    [Parameter]
+    public EventCallback OnOrganizationUpdated { get; set; }
+    [Parameter]
+    public int Id { get; set; }
+    [Parameter]
+    public OrganizationCreateDTO? OrganizationToUpdate { get; set; }
+
+    private Modal OrganizationModal { get; set; } = new();
+
+    public async Task Show() => await OrganizationModal.Show();
+
+    private async Task CloseOrganizationModalAsync() => await OrganizationModal.Hide();
+
+    private async Task UpdateOrganizationAsync()
+    {
+        await EnterpriseWarehouseApi.UpdateOrganization(Id, OrganizationToUpdate!);
+        await OrganizationModal.Hide();
+        await OnOrganizationUpdated.InvokeAsync();
+    }
+}

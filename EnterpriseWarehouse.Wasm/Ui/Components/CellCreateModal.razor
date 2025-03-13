@@ -1,0 +1,87 @@
+﻿@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Modal @ref="CellModal">
+    <Alert Color="Color.Danger" @bind-Visible="@IsAlertVisible">
+        <AlertMessage>Список товаров пуст!</AlertMessage>
+    </Alert>
+    <ModalContent Centered>
+        <Form>
+            <ModalHeader>
+                <ModalTitle>Новая ячейка склада</ModalTitle>
+                <CloseButton Clicked="CloseCellModalAsync" />
+            </ModalHeader>
+
+            <ModalBody>
+                <Field>
+                    <FieldLabel>Выберите товар</FieldLabel>
+                    <Select TValue="int" @bind-SelectedValue="NewCell.ProductId">
+                        @if (Products != null)
+                        {
+                            @foreach (var product in Products)
+                            {
+                                <SelectItem Value="@product.Id">@($"{product.Id} | {product.Name} | {product.Code}")</SelectItem>
+                            }
+                        }
+                    </Select>
+                </Field>
+                <Field>
+                    <FieldLabel>Количество товара</FieldLabel>
+                    <InputNumber @bind-Value="NewCell.Quantity" />
+                </Field>
+            </ModalBody>
+
+            <ModalFooter>
+                <Button Color="Color.Secondary" Clicked="CloseCellModalAsync">Отмена</Button>
+                <Button Color="Color.Primary" Clicked="CreateCellAsync">Создать</Button>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+
+@code {
+    [Parameter]
+    public EventCallback OnCellAdded { get; set; }
+    private bool IsAlertVisible { get; set; } = false;
+    private Modal CellModal { get; set; } = new();
+    private CellCreateDTO NewCell { get; set; } = new();
+    private IEnumerable<ProductDTO>? Products { get; set; }
+
+    public async Task Show()
+    {
+        await LoadProductsAsync();
+        await CellModal.Show();
+    }
+
+    private async Task CloseCellModalAsync()
+    {
+        IsAlertVisible = false;
+        NewCell = new();
+        await CellModal.Hide();
+    }
+
+    private async Task CreateCellAsync()
+    {
+        try
+        {
+            await EnterpriseWarehouseApi.CreateCell(NewCell);
+            await CloseCellModalAsync();
+            await OnCellAdded.InvokeAsync();
+        }
+        catch
+        {
+            IsAlertVisible = true;
+        }
+    }
+    private async Task LoadProductsAsync()
+    {
+        Products = await EnterpriseWarehouseApi.GetAllProducts();
+        if (Products.FirstOrDefault() is null)
+        {
+            NewCell.ProductId = 0;
+        }
+        else
+        {
+            NewCell.ProductId = Products.FirstOrDefault()!.Id;
+        }
+    }
+}

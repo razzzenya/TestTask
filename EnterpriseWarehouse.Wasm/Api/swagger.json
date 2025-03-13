@@ -1,0 +1,1677 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "EnterpriseWarehouse.API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Cell": {
+      "get": {
+        "tags": [
+          "Cell"
+        ],
+        "summary": "Возвращает список всех ячеек склада.",
+        "responses": {
+          "200": {
+            "description": "Список ячеек успешно возвращён.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CellDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CellDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CellDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Cell"
+        ],
+        "summary": "Добавляет новую ячейку на склад.",
+        "requestBody": {
+          "description": "Объект EnterpriseWarehouse.API.DTO.CellCreateDTO, содержащий информацию о новой ячейке.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CellCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CellCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CellCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ячейка успешно добавлена.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CellDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CellDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CellDTO"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка при добавлении ячейки."
+          }
+        }
+      }
+    },
+    "/api/Cell/{id}": {
+      "get": {
+        "tags": [
+          "Cell"
+        ],
+        "summary": "Получает информацию о ячейке склада по её идентификатору.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор ячейки.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ячейка найдена и информация успешно возвращена.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CellDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CellDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CellDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ячейка с указанным идентификатором не найдена."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Cell"
+        ],
+        "summary": "Обновляет информацию о существующей ячейке.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор ячейки.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Объект EnterpriseWarehouse.API.DTO.CellCreateDTO, содержащий обновлённые данные ячейки.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CellCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CellCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CellCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ячейка успешно обновлена.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CellDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CellDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CellDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Ячейка с указанным идентификатором не найдена."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cell"
+        ],
+        "summary": "Удаляет ячейку склада по её идентификатору.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор ячейки.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ячейка успешно удалена."
+          },
+          "404": {
+            "description": "Ячейка с указанным идентификатором не найдена."
+          }
+        }
+      }
+    },
+    "/api/Organization": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Возвращает список всех организаций.",
+        "responses": {
+          "200": {
+            "description": "Список организаций успешно возвращён.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Добавляет новую организацию.",
+        "requestBody": {
+          "description": "Объект EnterpriseWarehouse.API.DTO.OrganizationCreateDTO, содержащий данные новой организации.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Организация успешно добавлена.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Organization/{id}": {
+      "get": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Возвращает информацию об организации по её идентификатору.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор организации.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Организация найдена и информация успешно возвращена.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Организация с указанным идентификатором не найдена."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Обновляет существующую организацию.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор обновляемой организации.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Объект EnterpriseWarehouse.API.DTO.OrganizationCreateDTO, содержащий обновлённые данные организации.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Организация успешно обновлена.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Организация с указанным идентификатором не найдена."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Organization"
+        ],
+        "summary": "Удаляет организацию по её идентификатору.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор организации для удаления.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Организация успешно удалена."
+          },
+          "404": {
+            "description": "Организация с указанным идентификатором не найдена."
+          }
+        }
+      }
+    },
+    "/api/Product": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Возвращает список всех товаров.",
+        "responses": {
+          "200": {
+            "description": "Список товаров успешно возвращён.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Добавляет новый товар.",
+        "requestBody": {
+          "description": "Объект EnterpriseWarehouse.API.DTO.ProductCreateDTO, содержащий информацию о новом товаре.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Товар успешно добавлен.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Product/{id}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Возвращает информацию о товаре по его идентификатору.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор товара.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Товар найден и информация успешно возвращена.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Товар с указанным идентификатором не найден."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Обновляет информацию о существующем товаре.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор товара.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Объект EnterpriseWarehouse.API.DTO.ProductCreateDTO, содержащий обновлённые данные товара.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Товар успешно обновлён.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Товар с указанным идентификатором не найден."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Удаляет товар по его идентификатору.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор товара.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Товар успешно удалён."
+          },
+          "404": {
+            "description": "Товар с указанным идентификатором не найден."
+          }
+        }
+      }
+    },
+    "/api/Query/sorted-products": {
+      "get": {
+        "tags": [
+          "Query"
+        ],
+        "summary": "Получает список всех продуктов, отсортированных по названию.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Query/products-recived-on-date": {
+      "get": {
+        "tags": [
+          "Query"
+        ],
+        "summary": "Получает список продуктов, полученных указанной организацией на заданную дату.",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Название организации.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Дата поставки.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Query/warehouse-state": {
+      "get": {
+        "tags": [
+          "Query"
+        ],
+        "summary": "Получает текущее состояние склада, включая информацию о ячейках.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CellDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CellDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CellDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Query/max-supplies-organizations": {
+      "get": {
+        "tags": [
+          "Query"
+        ],
+        "summary": "Получает список организаций с максимальным количеством поставок за указанный период.",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "Начальная дата периода.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "Конечная дата периода.",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationMaxSuppliesDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationMaxSuppliesDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationMaxSuppliesDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Query/five-max-quantity-products": {
+      "get": {
+        "tags": [
+          "Query"
+        ],
+        "summary": "Получает пять продуктов с максимальном количеством на складе.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductQuantityDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductQuantityDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductQuantityDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Query/get-quantity-product-supply-to-organizations": {
+      "get": {
+        "tags": [
+          "Query"
+        ],
+        "summary": "Получает количество поставок продуктов для каждой организации.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductSupplyToOrganizationsDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductSupplyToOrganizationsDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductSupplyToOrganizationsDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Query/get-nearest-organizations": {
+      "get": {
+        "tags": [
+          "Query"
+        ],
+        "summary": "Получает сведения о ближайших организациях к каждой организации.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationDistanceDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationDistanceDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationDistanceDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Query/get-top-5-organizations-by-area": {
+      "get": {
+        "tags": [
+          "Query"
+        ],
+        "summary": "Получает топ организаций с наибольшей площадью.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationAreaDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationAreaDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationAreaDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Query/get-most-remote-organizations": {
+      "get": {
+        "tags": [
+          "Query"
+        ],
+        "summary": "Получает информацию об организациях, наиболее удаленных от остальных организаций.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationRemoteDistanceDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationRemoteDistanceDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrganizationRemoteDistanceDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Supply": {
+      "get": {
+        "tags": [
+          "Supply"
+        ],
+        "summary": "Возвращает список всех поставок.",
+        "responses": {
+          "200": {
+            "description": "Список поставок успешно возвращён.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SupplyDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SupplyDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SupplyDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Supply"
+        ],
+        "summary": "Добавляет новую поставку.",
+        "requestBody": {
+          "description": "Объект EnterpriseWarehouse.API.DTO.SupplyCreateDTO, содержащий информацию о новой поставке.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplyCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplyCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplyCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Поставка успешно добавлена.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplyDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplyDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplyDTO"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка при добавлении поставки."
+          }
+        }
+      }
+    },
+    "/api/Supply/{id}": {
+      "get": {
+        "tags": [
+          "Supply"
+        ],
+        "summary": "Получает информацию о поставке по её идентификатору.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор поставки.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Поставка найдена и информация успешно возвращена.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplyDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplyDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplyDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Поставка с указанным идентификатором не найдена."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Supply"
+        ],
+        "summary": "Обновляет информацию о существующей поставке.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор поставки.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Объект EnterpriseWarehouse.API.DTO.SupplyCreateDTO, содержащий обновлённые данные поставки.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplyCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplyCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplyCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Поставка успешно обновлена.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplyDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplyDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SupplyDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Поставка с указанным идентификатором не найдена."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Supply"
+        ],
+        "summary": "Удаляет поставку по её идентификатору.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Идентификатор поставки.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Поставка успешно удалена."
+          },
+          "404": {
+            "description": "Поставка с указанным идентификатором не найдена."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CellCreateDTO": {
+        "required": [
+          "productId",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "description": "Идентификатор товара",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Количество товара в ячейке",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO для создания ячейки"
+      },
+      "CellDTO": {
+        "required": [
+          "id",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Идентификатор ячейки",
+            "format": "int32"
+          },
+          "product": {
+            "$ref": "#/components/schemas/ProductDTO"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Количество товара в ячейке",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO ячейки"
+      },
+      "OrganizationAreaDTO": {
+        "required": [
+          "area",
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Идентификатор организации",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название организации",
+            "nullable": true
+          },
+          "area": {
+            "type": "number",
+            "description": "Расстояние до близжайшей организации",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO описывающее организацию и ее площадь"
+      },
+      "OrganizationCreateDTO": {
+        "required": [
+          "address",
+          "geometry",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Название",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "description": "Адрес",
+            "nullable": true
+          },
+          "geometry": {
+            "type": "string",
+            "description": "Геометрия в виде полигона",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO для создания организации"
+      },
+      "OrganizationDTO": {
+        "required": [
+          "address",
+          "geometry",
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Идентификатор",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "description": "Адрес",
+            "nullable": true
+          },
+          "geometry": {
+            "type": "string",
+            "description": "Геометрия в виде полигона",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO организации"
+      },
+      "OrganizationDistanceDTO": {
+        "required": [
+          "distance",
+          "name",
+          "nearestOrganization"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Название организации",
+            "nullable": true
+          },
+          "nearestOrganization": {
+            "type": "string",
+            "description": "Название близжайшей организации",
+            "nullable": true
+          },
+          "distance": {
+            "type": "number",
+            "description": "Расстояние до близжайшей организации",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO описывающее близжайшую организацию и расстояние до неё"
+      },
+      "OrganizationMaxSuppliesDTO": {
+        "required": [
+          "address",
+          "geometry",
+          "id",
+          "name",
+          "totalQuantity"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Идентификатор",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "description": "Адрес",
+            "nullable": true
+          },
+          "geometry": {
+            "type": "string",
+            "description": "Геометрия в виде полигона",
+            "nullable": true
+          },
+          "totalQuantity": {
+            "type": "integer",
+            "description": "Количество полученной продукции",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO организации"
+      },
+      "OrganizationRemoteDistanceDTO": {
+        "required": [
+          "id",
+          "name",
+          "totalDistance"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Идентификатор организации",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название организации",
+            "nullable": true
+          },
+          "totalDistance": {
+            "type": "number",
+            "description": "Суммарное расстояние до остальных организаций",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO описывающее организацию и суммарное растояние до остальных организаций"
+      },
+      "ProductCreateDTO": {
+        "required": [
+          "code",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Код товара",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO для создания товара"
+      },
+      "ProductDTO": {
+        "required": [
+          "code",
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Идентификатор",
+            "format": "int32"
+          },
+          "code": {
+            "type": "integer",
+            "description": "Код товара",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO для товара"
+      },
+      "ProductQuantityDTO": {
+        "type": "object",
+        "properties": {
+          "productName": {
+            "type": "string",
+            "description": "Название товара",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Количество товара",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO описывающее продукт и его количество на складе"
+      },
+      "ProductSupplyToOrganizationsDTO": {
+        "required": [
+          "organizationName",
+          "productName"
+        ],
+        "type": "object",
+        "properties": {
+          "totalQuantity": {
+            "type": "integer",
+            "description": "Количество товара",
+            "format": "int32"
+          },
+          "productName": {
+            "type": "string",
+            "description": "Название товара",
+            "nullable": true
+          },
+          "organizationName": {
+            "type": "string",
+            "description": "Название организации",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO описывающее количество товара поставленного организации"
+      },
+      "SupplyCreateDTO": {
+        "required": [
+          "organizationId",
+          "productId",
+          "quantity",
+          "supplyDate"
+        ],
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "description": "Идентификатор товара",
+            "format": "int32"
+          },
+          "organizationId": {
+            "type": "integer",
+            "description": "Идентификатор организации",
+            "format": "int32"
+          },
+          "supplyDate": {
+            "type": "string",
+            "description": "Дата поставки",
+            "format": "date-time"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Количество поставленного товара",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO для создания поставки"
+      },
+      "SupplyDTO": {
+        "required": [
+          "id",
+          "organization",
+          "product",
+          "quantity",
+          "supplyDate"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Идентификатор",
+            "format": "int32"
+          },
+          "product": {
+            "$ref": "#/components/schemas/ProductDTO"
+          },
+          "organization": {
+            "$ref": "#/components/schemas/OrganizationDTO"
+          },
+          "supplyDate": {
+            "type": "string",
+            "description": "Дата поставки",
+            "format": "date-time"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Количество поставленного товара",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DTO поставки"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+﻿@page "/five-max-quantity-products"
+@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Card>
+    <CardHeader>
+        <Row Class="justify-content-between">
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <h4>Топ 5 товаров по наличию на складе</h4>
+            </Column>
+        </Row>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="ProductQuantityDTO"
+                  Data="Products"
+                  Responsive
+                  Striped>
+            <DataGridColumns>
+                <DataGridColumn TItem="ProductQuantityDTO"
+                                Field="@nameof(ProductQuantityDTO.ProductName)"
+                                Caption="Название">
+                </DataGridColumn>
+                <DataGridColumn TItem="ProductQuantityDTO"
+                                Field="@nameof(ProductQuantityDTO.Quantity)"
+                                Caption="Количество">
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+    </CardBody>
+</Card>
+
+
+@code {
+    private IEnumerable<ProductQuantityDTO> Products { get; set; } = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        Products = await EnterpriseWarehouseApi.GetFiveMaxQuantityProducts();
+        await base.OnInitializedAsync();
+    }
+}

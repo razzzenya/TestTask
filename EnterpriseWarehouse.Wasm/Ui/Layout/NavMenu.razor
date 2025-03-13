@@ -1,0 +1,88 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Склад предприятия</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="products">
+                <span aria-hidden="true"></span> Товары
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="organizations">
+                <span aria-hidden="true"></span> Организации
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="cells">
+                <span aria-hidden="true"></span> Ячейки склада
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="supplies">
+                <span aria-hidden="true"></span> Поставки
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="sorted-products">
+                <span aria-hidden="true"></span> Отсортированные товары
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="products-recived-on-date">
+                <span aria-hidden="true"></span> Товары за опр. дату
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="warehouse-state">
+                <span aria-hidden="true"></span> Состояние склада
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="max-supplies-organizations">
+                <span aria-hidden="true"></span> Организация с макс. поставками
+            </NavLink>
+        </div>
+               <div class="nav-item px-3">
+            <NavLink class="nav-link" href="five-max-quantity-products">
+                <span aria-hidden="true"></span> Топ 5 товаров по наличию
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="get-quantity-product-supply-to-organizations">
+                <span aria-hidden="true"></span> Кол-во поставленных продуктов
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="get-nearest-organizations">
+                <span aria-hidden="true"></span> Сведения о ближайших орг.
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="get-top-5-organizations-by-area">
+                <span aria-hidden="true"></span> Орг.с наибольшей пл.
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="get-most-remote-organizations">
+                <span aria-hidden="true"></span>Самые удаленные орг.
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

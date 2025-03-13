@@ -1,0 +1,94 @@
+﻿@page "/max-supplies-organizations"
+@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Card>
+    <CardHeader>
+        <Row Class="justify-content-between">
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <h4>Организации с максимальным кол-вом поставок за промежуток времени</h4>
+            </Column>
+        </Row>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="OrganizationMaxSuppliesDTO"
+                  Data="PagedOrganizations"
+                  Responsive
+                  Striped
+                  PageSize ="20">
+            <DataGridColumns>
+                <DataGridColumn TItem="OrganizationMaxSuppliesDTO"
+                                Field="@nameof(OrganizationMaxSuppliesDTO.Id)"
+                                Caption="Идентификатор организации">
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationMaxSuppliesDTO"
+                                Field="@nameof(OrganizationMaxSuppliesDTO.Name)"
+                                Caption="Название">
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationMaxSuppliesDTO"
+                                Field="@nameof(OrganizationMaxSuppliesDTO.Address)"
+                                Caption="Адрес">
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationMaxSuppliesDTO"
+                                Field="@nameof(OrganizationMaxSuppliesDTO.Geometry)"
+                                Caption="Геометрия">
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationMaxSuppliesDTO"
+                                Field="@nameof(OrganizationMaxSuppliesDTO.TotalQuantity)"
+                                Caption="Кол-во товара">
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+        <nav>
+            <ul class="pagination">
+                @for (int i = 1; i <= TotalPages; i++)
+                {
+                    var pageNum = i;
+                    <li class="page-item @(i == CurrentPage ? "active" : "")">
+                        <a class="page-link" @onclick="() => ChangePage(pageNum)">@pageNum</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </CardBody>
+</Card>
+<Div>
+    <Label>Первая дата:</Label>
+    <InputDate @bind-Value="FirstDate" />
+
+    <Label>Вторая дата:</Label>
+    <InputDate @bind-Value="SecondDate" />
+
+    <Button Color="Color.Primary" Clicked="RefreshOrganizationCollection">Поиск</Button>
+</Div>
+
+
+@code {
+    private IEnumerable<OrganizationMaxSuppliesDTO> Organizations { get; set; } = [];
+    private IEnumerable<OrganizationMaxSuppliesDTO> PagedOrganizations { get; set; } = [];
+    private DateTime FirstDate { get; set; } = DateTime.Today;
+    private DateTime SecondDate { get; set; } = DateTime.Today;
+    private int CurrentPage { get; set; } = 1;
+    private int PageSize { get; set; } = 20;
+    private int TotalPages => (int)Math.Ceiling((double)Organizations.Count() / PageSize);
+
+    private void UpdatePagedOrganizations()
+    {
+        PagedOrganizations = Organizations
+            .Skip((CurrentPage - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
+    }
+
+    private void ChangePage(int page)
+    {
+        CurrentPage = page;
+        UpdatePagedOrganizations();
+    }
+
+    private async Task RefreshOrganizationCollection()
+    {
+        Organizations = await EnterpriseWarehouseApi.GetMaxSuppliesOrganizations(FirstDate, SecondDate);
+        UpdatePagedOrganizations();
+    }
+}
+

@@ -1,0 +1,126 @@
+﻿@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Modal @ref="SupplyModal">
+    <Alert Color="Color.Danger" @bind-Visible="@IsAlertVisible">
+        <AlertMessage>Список товаров или организаций пуст!</AlertMessage>
+    </Alert>
+    <ModalContent Centered>
+        <Form>
+            <ModalHeader>
+                <ModalTitle>Изменить поставку</ModalTitle>
+                <CloseButton Clicked="CloseSupplyModalAsync" />
+            </ModalHeader>
+
+            <ModalBody>
+                @if (SupplyToUpdate != null)
+                {
+                    <Field>
+                        <FieldLabel>Выберите товар</FieldLabel>
+                        <Select TValue="int" @bind-SelectedValue="SupplyToUpdate!.ProductId">
+                            @if (Products != null)
+                            {
+                                @foreach (var product in Products)
+                                {
+                                    <SelectItem Value="@product.Id">@($"{product.Id} | {product.Name} | {product.Code}")</SelectItem>
+                                }
+                            }
+                        </Select>
+                    </Field>
+                    <Field>
+                        <FieldLabel>Выберите организацию</FieldLabel>
+                        <Select TValue="int" @bind-SelectedValue="SupplyToUpdate!.OrganizationId">
+                            @if (Organizations != null)
+                            {
+                                @foreach (var organization in Organizations)
+                                {
+                                    <SelectItem Value="@organization.Id">@($"{organization.Id} | {organization.Name} | {organization.Address}")</SelectItem>
+                                }
+                            }
+                        </Select>
+                    </Field>
+                    <Field>
+                        <FieldLabel>Дата поставки</FieldLabel>
+                        <InputDate @bind-Value="SupplyToUpdate.SupplyDate" />
+                    </Field>
+                    <Field>
+                        <FieldLabel>Количество товара</FieldLabel>
+                        <InputNumber @bind-Value="SupplyToUpdate.Quantity" />
+                    </Field>
+                }
+            </ModalBody>
+
+            <ModalFooter>
+                <Button Color="Color.Secondary" Clicked="CloseSupplyModalAsync">Отмена</Button>
+                <Button Color="Color.Primary" Clicked="UpdateSupplyAsync">Изменить</Button>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+
+@code {
+    [Parameter]
+    public EventCallback OnSupplyUpdated { get; set; }
+    [Parameter]
+    public int Id { get; set; }
+    [Parameter]
+    public SupplyCreateDTO? SupplyToUpdate { get; set; }
+    private IEnumerable<ProductDTO>? Products { get; set; }
+    private IEnumerable<OrganizationDTO>? Organizations { get; set; }
+    private Modal SupplyModal { get; set; } = new();
+    private bool IsAlertVisible { get; set; } = false;
+
+    public async Task Show()
+    {
+        await LoadProductsAsync();
+        await LoadOrganizationsAsync();
+        SupplyToUpdate!.SupplyDate = DateTime.Now;
+        await SupplyModal.Show();
+    }
+
+    private async Task CloseSupplyModalAsync()
+    {
+        IsAlertVisible = false;
+        SupplyToUpdate = new();
+        await SupplyModal.Hide();
+    }
+
+    private async Task UpdateSupplyAsync()
+    {
+        try
+        {
+            await EnterpriseWarehouseApi.UpdateSupply(Id, SupplyToUpdate!);
+            await CloseSupplyModalAsync();
+            await OnSupplyUpdated.InvokeAsync();
+        }
+        catch
+        {
+            IsAlertVisible = true;
+        }
+    }
+
+    private async Task LoadProductsAsync()
+    {
+        Products = await EnterpriseWarehouseApi.GetAllProducts();
+        if (Products.FirstOrDefault() is null)
+        {
+            SupplyToUpdate!.ProductId = 0;
+        }
+        else
+        {
+            SupplyToUpdate!.ProductId = Products.FirstOrDefault()!.Id;
+        }
+    }
+
+    private async Task LoadOrganizationsAsync()
+    {
+        Organizations = await EnterpriseWarehouseApi.GetAllOrganizations();
+        if (Organizations.FirstOrDefault() is null)
+        {
+            SupplyToUpdate!.OrganizationId = 0;
+        }
+        else
+        {
+            SupplyToUpdate!.OrganizationId = Organizations.FirstOrDefault()!.Id;
+        }
+    }
+}

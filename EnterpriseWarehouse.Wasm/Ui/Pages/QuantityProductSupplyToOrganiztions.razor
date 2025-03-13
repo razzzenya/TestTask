@@ -1,0 +1,81 @@
+﻿@page "/get-quantity-product-supply-to-organizations"
+@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Card>
+    <CardHeader>
+        <Row Class="justify-content-between">
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <h4>Количество товара, поставленного организации</h4>
+            </Column>
+        </Row>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="ProductSupplyToOrganizationsDTO"
+                  Data="PagedProducts"
+                  Responsive
+                  Striped
+                  PageSize="20">
+            <DataGridColumns>
+                <DataGridColumn TItem="ProductSupplyToOrganizationsDTO"
+                                Field="@nameof(ProductSupplyToOrganizationsDTO.TotalQuantity)"
+                                Caption="Общее кол-во">
+                </DataGridColumn>
+                <DataGridColumn TItem="ProductSupplyToOrganizationsDTO"
+                                Field="@nameof(ProductSupplyToOrganizationsDTO.ProductName)"
+                                Caption="Название товара">
+                </DataGridColumn>
+                <DataGridColumn TItem="ProductSupplyToOrganizationsDTO"
+                                Field="@nameof(ProductSupplyToOrganizationsDTO.OrganizationName)"
+                                Caption="Название организации">
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+        <nav>
+            <ul class="pagination">
+                @for (int i = 1; i <= TotalPages; i++)
+                {
+                    var pageNum = i;
+                    <li class="page-item @(i == CurrentPage ? "active" : "")">
+                        <a class="page-link" @onclick="() => ChangePage(pageNum)">@pageNum</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </CardBody>
+</Card>
+
+
+@code {
+    private IEnumerable<ProductSupplyToOrganizationsDTO> Products { get; set; } = [];
+    private IEnumerable<ProductSupplyToOrganizationsDTO> PagedProducts { get; set; } = [];
+    private int CurrentPage { get; set; } = 1;
+    private int PageSize { get; set; } = 20;
+    private int TotalPages => (int)Math.Ceiling((double)Products.Count() / PageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshProductsCollection();
+        await base.OnInitializedAsync();
+    }
+
+    private void UpdatePagedProducts()
+    {
+        PagedProducts = Products
+            .Skip((CurrentPage - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
+    }
+
+    private void ChangePage(int page)
+    {
+        CurrentPage = page;
+        UpdatePagedProducts();
+    }
+
+    private async Task RefreshProductsCollection()
+    {
+        Products = await EnterpriseWarehouseApi.GetQuantityProductSupplyToOrganiztions();
+        UpdatePagedProducts();
+    }
+}
+

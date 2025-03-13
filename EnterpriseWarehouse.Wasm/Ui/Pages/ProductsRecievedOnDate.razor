@@ -1,0 +1,81 @@
+﻿@page "/products-recived-on-date"
+@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Card>
+    <Alert Color="Color.Danger" @bind-Visible="@IsAlertVisible">
+        <AlertMessage>Вы не ввели название организации!</AlertMessage>
+    </Alert>
+    <CardHeader>
+        <h4>Товары, поставленные на дату</h4>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="ProductDTO" Data="PagedProducts" PageSize="20" Responsive Striped>
+            <DataGridColumns>
+                <DataGridColumn TItem="ProductDTO" Field="@nameof(ProductDTO.Id)" Caption="Идентификатор товара" />
+                <DataGridColumn TItem="ProductDTO" Field="@nameof(ProductDTO.Code)" Caption="Код товара" />
+                <DataGridColumn TItem="ProductDTO" Field="@nameof(ProductDTO.Name)" Caption="Название" />
+            </DataGridColumns>
+        </DataGrid>
+        <nav>
+            <ul class="pagination">
+                @for (int i = 1; i <= TotalPages; i++)
+                {
+                    var pageNum = i;
+                    <li class="page-item @(i == CurrentPage ? "active" : "")">
+                        <a class="page-link" @onclick="() => ChangePage(pageNum)">@pageNum</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </CardBody>
+</Card>
+
+<Div>
+    <label>Название организации:</label>
+    <TextEdit @bind-Text="@Name"/>
+
+    <label>Дата:</label>
+    <InputDate @bind-Value="Date" />
+
+    <Button Color="Color.Primary" Clicked="RefreshProductsCollection">Поиск</Button>
+</Div>
+
+@code {
+    private IEnumerable<ProductDTO> Products { get; set; } = [];
+    private IEnumerable<ProductDTO> PagedProducts { get; set; } = [];
+    private DateTime Date { get; set; } = DateTime.Today;
+    private string Name { get; set; } = "";
+    private bool IsAlertVisible = false;
+    private int CurrentPage { get; set; } = 1;
+    private int PageSize { get; set; } = 20;
+    private int TotalPages => (int)Math.Ceiling((double)Products.Count() / PageSize);
+
+
+    private async Task RefreshProductsCollection()
+    {
+        try
+        {
+            Products = await EnterpriseWarehouseApi.GetProductsRecieveOnDate(Name, Date.Date);
+            UpdatePagedProducts();
+            IsAlertVisible = false;
+        }
+        catch
+        {
+            IsAlertVisible = true;
+        }
+    }
+
+    private void UpdatePagedProducts()
+    {
+        PagedProducts = Products
+            .Skip((CurrentPage - 1) * PageSize)
+            .Take(PageSize)
+            .ToList();
+    }
+
+    private void ChangePage(int page)
+    {
+        CurrentPage = page;
+        UpdatePagedProducts();
+    }
+}

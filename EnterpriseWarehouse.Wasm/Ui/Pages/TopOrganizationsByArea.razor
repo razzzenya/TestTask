@@ -1,0 +1,46 @@
+﻿@page "/get-top-5-organizations-by-area"
+@inject IEnterpriseWarehouseApiWrapper EnterpriseWarehouseApi
+
+<Card>
+    <CardHeader>
+        <Row Class="justify-content-between">
+            <Column ColumnSize="ColumnSize.IsAuto">
+                <h4>Топ 5 организаций с наибольшей площадью</h4>
+            </Column>
+        </Row>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="OrganizationAreaDTO"
+                  Data="Organizations"
+                  Responsive
+                  Striped
+                  PageSize="20">
+            <DataGridColumns>
+                <DataGridColumn TItem="OrganizationAreaDTO"
+                                Field="@nameof(OrganizationAreaDTO.Id)"
+                                Caption="Идентификатор">
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationAreaDTO"
+                                Field="@nameof(OrganizationAreaDTO.Name)"
+                                Caption="Название">
+                </DataGridColumn>
+                <DataGridColumn TItem="OrganizationAreaDTO"
+                                Field="@nameof(OrganizationAreaDTO.Area)"
+                                Caption="Площадь">
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+    </CardBody>
+</Card>
+
+
+@code {
+    private IEnumerable<OrganizationAreaDTO> Organizations { get; set; } = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        Organizations = await EnterpriseWarehouseApi.GetTop5OrganizationsByArea();
+        await base.OnInitializedAsync();
+    }
+}
+
