@@ -17,9 +17,9 @@ public class CellController(IEntityService<CellDTO, CellCreateDTO> service) : Co
     /// <returns>Коллекция объектов <see cref="CellDTO"/>.</returns>
     /// <response code="200">Список ячеек успешно возвращён.</response>
     [HttpGet]
-    public ActionResult<IEnumerable<CellDTO>> Get()
+    public async Task<ActionResult<IEnumerable<CellDTO>>> Get()
     {
-        return Ok(service.GetAll());
+        return Ok(await service.GetAll());
     }
 
     /// <summary>
@@ -30,9 +30,9 @@ public class CellController(IEntityService<CellDTO, CellCreateDTO> service) : Co
     /// <response code="200">Ячейка найдена и информация успешно возвращена.</response>
     /// <response code="404">Ячейка с указанным идентификатором не найдена.</response>
     [HttpGet("{id}")]
-    public ActionResult<CellDTO> Get(int id)
+    public async Task<ActionResult<CellDTO>> Get(int id)
     {
-        var cell = service.GetById(id);
+        var cell = await service.GetById(id);
         if (cell == null)
         {
             return NotFound();
@@ -48,9 +48,9 @@ public class CellController(IEntityService<CellDTO, CellCreateDTO> service) : Co
     /// <response code="200">Ячейка успешно добавлена.</response>
     /// <response code="400">Ошибка при добавлении ячейки.</response>
     [HttpPost]
-    public ActionResult<CellDTO> Post(CellCreateDTO newCell)
+    public async Task<ActionResult<CellDTO>> Post(CellCreateDTO newCell)
     {
-        var result = service.Add(newCell);
+        var result = await service.Add(newCell);
         if (result == null)
         {
             return BadRequest();
@@ -67,9 +67,9 @@ public class CellController(IEntityService<CellDTO, CellCreateDTO> service) : Co
     /// <response code="200">Ячейка успешно обновлена.</response>
     /// <response code="404">Ячейка с указанным идентификатором не найдена.</response>
     [HttpPut("{id}")]
-    public ActionResult<CellDTO> Put(int id, CellCreateDTO newCell)
+    public async Task<ActionResult<CellDTO>> Put(int id, CellCreateDTO newCell)
     {
-        var result = service.Update(id, newCell);
+        var result = await service.Update(id, newCell);
         if (result == null)
         {
             return NotFound();
@@ -85,9 +85,9 @@ public class CellController(IEntityService<CellDTO, CellCreateDTO> service) : Co
     /// <response code="200">Ячейка успешно удалена.</response>
     /// <response code="404">Ячейка с указанным идентификатором не найдена.</response>
     [HttpDelete("{id}")]
-    public ActionResult Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-        var result = service.Delete(id);
+        var result = await service.Delete(id);
         if (!result)
         {
             return NotFound();

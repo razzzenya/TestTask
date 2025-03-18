@@ -6,28 +6,28 @@ namespace EnterpriseWarehouse.Domain.Repositories;
 
 public class ProductRepository(WarehouseContext context) : IEntityRepository<Product>
 {
-    public IEnumerable<Product> GetAll() => context.Products;
+    public async Task<IEnumerable<Product>> GetAll() => await context.Products.ToListAsync();
 
-    public Product? GetById(int id) => context.Products.Find(id);
+    public async Task<Product?> GetById(int id) => await context.Products.FindAsync(id);
 
-    public Product Add(Product newProduct)
+    public async Task<Product> Add(Product newProduct)
     {
         var product = context.Products.Add(newProduct).Entity;
-        context.SaveChanges();
+        await context.SaveChangesAsync();
         return product;
     }
 
-    public void Delete(Product product)
+    public async Task Delete(Product product)
     {
         context.Products.Remove(product);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
     }
 
-    public Product Update(Product updatedProduct)
+    public async Task<Product> Update(Product updatedProduct)
     {
         var entry = context.Entry(updatedProduct);
         entry.State = EntityState.Modified;
-        context.SaveChanges();
+        await context.SaveChangesAsync();
         return entry.Entity;
     }
 }

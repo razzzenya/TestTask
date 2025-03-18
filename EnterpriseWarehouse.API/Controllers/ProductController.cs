@@ -17,9 +17,9 @@ public class ProductController(IEntityService<ProductDTO, ProductCreateDTO> serv
     /// <returns>Коллекция объектов <see cref="ProductDTO"/>.</returns>
     /// <response code="200">Список товаров успешно возвращён.</response>
     [HttpGet]
-    public ActionResult<IEnumerable<ProductDTO>> Get()
+    public async Task<ActionResult<IEnumerable<ProductDTO>>> Get()
     {
-        return Ok(service.GetAll());
+        return Ok(await service.GetAll());
     }
 
     /// <summary>
@@ -30,9 +30,9 @@ public class ProductController(IEntityService<ProductDTO, ProductCreateDTO> serv
     /// <response code="200">Товар найден и информация успешно возвращена.</response>
     /// <response code="404">Товар с указанным идентификатором не найден.</response>
     [HttpGet("{id}")]
-    public ActionResult<ProductDTO> Get(int id)
+    public async Task<ActionResult<ProductDTO>> Get(int id)
     {
-        var product = service.GetById(id);
+        var product = await service.GetById(id);
         if (product == null)
         {
             return NotFound();
@@ -47,9 +47,9 @@ public class ProductController(IEntityService<ProductDTO, ProductCreateDTO> serv
     /// <returns>Объект <see cref="ProductDTO"/>, представляющий добавленный товар.</returns>
     /// <response code="200">Товар успешно добавлен.</response>
     [HttpPost]
-    public ActionResult<ProductDTO> Post(ProductCreateDTO newProduct)
+    public async Task<ActionResult<ProductDTO>> Post(ProductCreateDTO newProduct)
     {
-        var result = service.Add(newProduct);
+        var result = await service.Add(newProduct);
         return Ok(result);
     }
 
@@ -62,9 +62,9 @@ public class ProductController(IEntityService<ProductDTO, ProductCreateDTO> serv
     /// <response code="200">Товар успешно обновлён.</response>
     /// <response code="404">Товар с указанным идентификатором не найден.</response>
     [HttpPut("{id}")]
-    public ActionResult<ProductDTO> Put(int id, ProductCreateDTO newProduct)
+    public async Task<ActionResult<ProductDTO>> Put(int id, ProductCreateDTO newProduct)
     {
-        var result = service.Update(id, newProduct);
+        var result = await service.Update(id, newProduct);
         if (result == null)
         {
             return NotFound();
@@ -80,9 +80,9 @@ public class ProductController(IEntityService<ProductDTO, ProductCreateDTO> serv
     /// <response code="200">Товар успешно удалён.</response>
     /// <response code="404">Товар с указанным идентификатором не найден.</response>
     [HttpDelete("{id}")]
-    public ActionResult Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-        var result = service.Delete(id);
+        var result = await service.Delete(id);
         if (!result)
         {
             return NotFound();

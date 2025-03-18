@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj": {}
+    "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj": {
+    "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj",
+        "projectUniqueName": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj",
         "projectName": "EnterpriseWarehouse.Wasm",
-        "projectPath": "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj",
+        "projectPath": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj",
         "packagesPath": "C:\\Users\\bucki\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.Wasm\\obj\\",
+        "outputPath": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bucki\\AppData\\Roaming\\NuGet\\NuGet.Config",

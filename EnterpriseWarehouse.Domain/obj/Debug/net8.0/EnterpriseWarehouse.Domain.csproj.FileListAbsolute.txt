@@ -28,3 +28,4 @@ C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Domain\obj\Debug\net8.0
 C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Domain\obj\Debug\net8.0\EnterpriseWarehouse.Domain.pdb
 C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Domain\obj\Debug\net8.0\EnterpriseWarehouse.Domain.genruntimeconfig.cache
 C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Domain\obj\Debug\net8.0\ref\EnterpriseWarehouse.Domain.dll
+C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Domain\obj\Debug\net8.0\EnterpriseWarehouse.Domain.sourcelink.json

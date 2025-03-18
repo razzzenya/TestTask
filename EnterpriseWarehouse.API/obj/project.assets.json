@@ -3457,11 +3457,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj",
+      "projectUniqueName": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj",
       "projectName": "EnterpriseWarehouse.API",
-      "projectPath": "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj",
+      "projectPath": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj",
       "packagesPath": "C:\\Users\\bucki\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.API\\obj\\",
+      "outputPath": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bucki\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3479,8 +3479,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.Domain\\EnterpriseWarehouse.Domain.csproj": {
-              "projectPath": "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.Domain\\EnterpriseWarehouse.Domain.csproj"
+            "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Domain\\EnterpriseWarehouse.Domain.csproj": {
+              "projectPath": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Domain\\EnterpriseWarehouse.Domain.csproj"
             }
           }
         }

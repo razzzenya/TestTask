@@ -256,3 +256,4 @@ C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.API\obj\Debug\net8.0\En
 C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.API\obj\Debug\net8.0\EnterpriseWarehouse.API.pdb
 C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.API\obj\Debug\net8.0\EnterpriseWarehouse.API.genruntimeconfig.cache
 C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.API\obj\Debug\net8.0\ref\EnterpriseWarehouse.API.dll
+C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.API\obj\Debug\net8.0\EnterpriseWarehouse.API.sourcelink.json

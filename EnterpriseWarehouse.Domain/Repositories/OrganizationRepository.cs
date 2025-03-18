@@ -6,28 +6,28 @@ namespace EnterpriseWarehouse.Domain.Repositories;
 
 public class OrganizationRepository(WarehouseContext context) : IEntityRepository<Organization>
 {
-    public IEnumerable<Organization> GetAll() => context.Organizations;
+    public async Task<IEnumerable<Organization>> GetAll() => await context.Organizations.ToListAsync();
 
-    public Organization? GetById(int id) => context.Organizations.Find(id);
+    public async Task<Organization?> GetById(int id) => await context.Organizations.FindAsync(id);
 
-    public Organization Add(Organization newOrganization)
+    public async Task<Organization> Add(Organization newOrganization)
     {
         var organization = context.Organizations.Add(newOrganization).Entity;
-        context.SaveChanges();
+        await context.SaveChangesAsync();
         return organization;
     }
 
-    public void Delete(Organization organization)
+    public async Task Delete(Organization organization)
     {
         context.Organizations.Remove(organization);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
     }
 
-    public Organization Update(Organization updatedOrganization)
+    public async Task<Organization> Update(Organization updatedOrganization)
     {
         var entry = context.Entry(updatedOrganization);
         entry.State = EntityState.Modified;
-        context.SaveChanges();
+        await context.SaveChangesAsync();
         return entry.Entity;
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Pd0QOST7ZA0=",
+  "dgSpecHash": "PfEAdZnzRy8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj",
+  "projectFilePath": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bucki\\.nuget\\packages\\blazorise\\1.7.0\\blazorise.1.7.0.nupkg.sha512",
     "C:\\Users\\bucki\\.nuget\\packages\\blazorise.bootstrap5\\1.7.0\\blazorise.bootstrap5.1.7.0.nupkg.sha512",

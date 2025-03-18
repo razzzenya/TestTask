@@ -88,3 +88,12 @@ FROM organization AS o
 2025-03-13 23:19:28.629 +04:00 [INF] Executed endpoint 'EnterpriseWarehouse.API.Controllers.OrganizationController.Get (EnterpriseWarehouse.API)'
 2025-03-13 23:19:28.630 +04:00 [INF] HTTP GET /api/Organization responded 200 in 1417.5089 ms
 2025-03-13 23:19:28.636 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7089/api/Organization - 200 null application/json; charset=utf-8 1426.6076ms
+2025-03-13 23:33:28.015 +04:00 [INF] Now listening on: https://localhost:7089
+2025-03-13 23:33:28.043 +04:00 [INF] Now listening on: http://localhost:5220
+2025-03-13 23:33:28.080 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-13 23:33:28.082 +04:00 [INF] Hosting environment: Development
+2025-03-13 23:33:28.083 +04:00 [INF] Content root path: C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.API
+2025-03-13 23:33:28.428 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7089/ - null null
+2025-03-13 23:33:28.590 +04:00 [INF] HTTP GET / responded 404 in 46.4995 ms
+2025-03-13 23:33:28.595 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7089/ - 404 0 null 169.7351ms
+2025-03-13 23:33:28.598 +04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7089/, Response status code: 404

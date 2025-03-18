@@ -7,25 +7,25 @@ public interface IEntityRepository<T>
     /// <summary>
     ///Получение всех сущностей
     /// </summary>
-    public IEnumerable<T> GetAll();
+    public Task<IEnumerable<T>> GetAll();
 
     /// <summary>
     ///Получение сущности по id
     /// </summary>
-    public T? GetById(int id);
+    public Task<T?> GetById(int id);
 
     /// <summary>
     ///Создание сущности
     /// </summary>
-    public T Add(T entity);
+    public Task<T> Add(T entity);
 
     /// <summary>
     ///Изменение сущности
     /// </summary>
-    public T Update(T entity);
+    public Task<T> Update(T entity);
 
     /// <summary>
     ///Удаление сущности
     /// </summary>
-    public void Delete(T entity);
+    public Task Delete(T entity);
 }

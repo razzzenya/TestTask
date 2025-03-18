@@ -17,9 +17,9 @@ public class QueryController(IQueryService service) : ControllerBase
     /// <returns>Список продуктов, отсортированных по названию.</returns>
     [HttpGet]
     [Route("sorted-products")]
-    public ActionResult<IEnumerable<ProductDTO>> GetAllProductsSortedByName()
+    public async Task<ActionResult<IEnumerable<ProductDTO>>> GetAllProductsSortedByName()
     {
-        return Ok(service.GetAllProductsSortedByName());
+        return Ok(await service.GetAllProductsSortedByName());
     }
 
     /// <summary>
@@ -30,9 +30,9 @@ public class QueryController(IQueryService service) : ControllerBase
     /// <returns>Список продуктов, полученных на заданную дату.</returns>
     [HttpGet]
     [Route("products-recived-on-date")]
-    public ActionResult<IEnumerable<ProductDTO>> GetProductsRecieveOnDate([FromQuery] string name, [FromQuery] DateTime date)
+    public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProductsRecieveOnDate([FromQuery] string name, [FromQuery] DateTime date)
     {
-        return Ok(service.GetProductsRecieveOnDate(name, date));
+        return Ok(await service.GetProductsRecieveOnDate(name, date));
     }
 
     /// <summary>
@@ -41,9 +41,9 @@ public class QueryController(IQueryService service) : ControllerBase
     /// <returns>Список всех ячеек на складе.</returns>
     [HttpGet]
     [Route("warehouse-state")]
-    public ActionResult<IEnumerable<CellDTO>> GetCurrentWarehouseState()
+    public async Task<ActionResult<IEnumerable<CellDTO>>> GetCurrentWarehouseState()
     {
-        return Ok(service.GetCurrentWarehouseState());
+        return Ok(await service.GetCurrentWarehouseState());
     }
 
     /// <summary>
@@ -54,9 +54,9 @@ public class QueryController(IQueryService service) : ControllerBase
     /// <returns>Список организаций с максимальной поставкой.</returns>
     [HttpGet]
     [Route("max-supplies-organizations")]
-    public ActionResult<IEnumerable<OrganizationMaxSuppliesDTO>> GetMaxSuppliesOrganizations([FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
+    public async Task<ActionResult<IEnumerable<OrganizationMaxSuppliesDTO>>> GetMaxSuppliesOrganizations([FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
     {
-        return Ok(service.GetMaxSuppliesOrganizations(startDate, endDate));
+        return Ok(await service.GetMaxSuppliesOrganizations(startDate, endDate));
     }
 
     /// <summary>
@@ -65,9 +65,9 @@ public class QueryController(IQueryService service) : ControllerBase
     /// <returns>Список продуктов с их количеством на складе.</returns>
     [HttpGet]
     [Route("five-max-quantity-products")]
-    public ActionResult<IEnumerable<ProductQuantityDTO>> GetFiveMaxQuantityProducts()
+    public async Task<ActionResult<IEnumerable<ProductQuantityDTO>>> GetFiveMaxQuantityProducts()
     {
-        return Ok(service.GetFiveMaxQuantityProducts());
+        return Ok(await service.GetFiveMaxQuantityProducts());
     }
 
     /// <summary>
@@ -76,9 +76,9 @@ public class QueryController(IQueryService service) : ControllerBase
     /// <returns>Список продуктов и количество их поставок по организациям.</returns>
     [HttpGet]
     [Route("get-quantity-product-supply-to-organizations")]
-    public ActionResult<IEnumerable<ProductSupplyToOrganizationsDTO>> GetQuantityProductSupplyToOrganiztions()
+    public async Task<ActionResult<IEnumerable<ProductSupplyToOrganizationsDTO>>> GetQuantityProductSupplyToOrganiztions()
     {
-        return Ok(service.GetQuantityProductSupplyToOrganiztions());
+        return Ok(await service.GetQuantityProductSupplyToOrganiztions());
     }
 
     /// <summary>
@@ -87,9 +87,9 @@ public class QueryController(IQueryService service) : ControllerBase
     /// <returns>Список организаций и близжайшие к ним.</returns>
     [HttpGet]
     [Route("get-nearest-organizations")]
-    public ActionResult<IEnumerable<OrganizationDistanceDTO>> GetNearestOrganizations()
+    public async Task<ActionResult<IEnumerable<OrganizationDistanceDTO>>> GetNearestOrganizations()
     {
-        return Ok(service.GetNearestOrganizations());
+        return Ok(await service.GetNearestOrganizations());
     }
 
     /// <summary>
@@ -98,9 +98,9 @@ public class QueryController(IQueryService service) : ControllerBase
     /// <returns>Список организаций с их площадью.</returns>
     [HttpGet]
     [Route("get-top-5-organizations-by-area")]
-    public ActionResult<IEnumerable<OrganizationAreaDTO>> GetTop5OrganizationsByArea()
+    public async Task<ActionResult<IEnumerable<OrganizationAreaDTO>>> GetTop5OrganizationsByArea()
     {
-        return Ok(service.GetTop5OrganizationsByArea());
+        return Ok(await service.GetTop5OrganizationsByArea());
     }
 
     /// <summary>
@@ -109,8 +109,8 @@ public class QueryController(IQueryService service) : ControllerBase
     /// <returns>Список организаций с их суммарным расстоянием до остальных организаций.</returns>
     [HttpGet]
     [Route("get-most-remote-organizations")]
-    public ActionResult<IEnumerable<OrganizationRemoteDistanceDTO>> GetMostRemoteOrganizations()
+    public async Task<ActionResult<IEnumerable<OrganizationRemoteDistanceDTO>>> GetMostRemoteOrganizations()
     {
-        return Ok(service.GetMostRemoteOrganizations());
+        return Ok(await service.GetMostRemoteOrganizations());
     }
 }

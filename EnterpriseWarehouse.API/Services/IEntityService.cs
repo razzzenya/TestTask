@@ -7,25 +7,25 @@ public interface IEntityService<DTO, CreateDTO>
     /// <summary>
     /// Получение всех сущностей
     /// </summary>
-    public IEnumerable<DTO> GetAll();
+    public Task<IEnumerable<DTO>> GetAll();
 
     /// <summary>
     /// Получение сущности при помощи id
     /// </summary>
-    DTO? GetById(int id);
+    Task<DTO?> GetById(int id);
 
     /// <summary>
     /// Добавление сущности
     /// </summary>
-    DTO? Add(CreateDTO entity);
+    Task<DTO?> Add(CreateDTO entity);
 
     /// <summary>
     /// Удаление сущности
     /// </summary>
-    bool Delete(int id);
+    Task<bool> Delete(int id);
 
     /// <summary>
     /// Изменение сущности
     /// </summary>
-    DTO? Update(int id, CreateDTO updatedEntity);
+    Task<DTO?> Update(int id, CreateDTO updatedEntity);
 }

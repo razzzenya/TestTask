@@ -9,28 +9,36 @@ namespace EnterpriseWarehouse.API.Services;
 
 public class OrganizationService(IEntityRepository<Organization> repository, IMapper mapper) : IEntityService<OrganizationDTO, OrganizationCreateDTO>
 {
-    public IEnumerable<OrganizationDTO> GetAll() => repository.GetAll().Select(mapper.Map<OrganizationDTO>);
-    public OrganizationDTO? GetById(int id) => mapper.Map<OrganizationDTO>(repository.GetById(id));
-
-    public OrganizationDTO Add(OrganizationCreateDTO newOrganization)
+    public async Task<IEnumerable<OrganizationDTO>> GetAll()
     {
-        return mapper.Map<OrganizationDTO>(repository.Add(mapper.Map<Organization>(newOrganization)));
+        var organizations = await repository.GetAll();
+        return organizations.Select(mapper.Map<OrganizationDTO>);
+    }
+    public async Task<OrganizationDTO?> GetById(int id)
+    {
+        var organization = await repository.GetById(id);
+        return mapper.Map<OrganizationDTO>(organization);
+    }
+    public async Task<OrganizationDTO?> Add(OrganizationCreateDTO newOrganization)
+    {
+        var organization = await repository.Add(mapper.Map<Organization>(newOrganization));
+        return mapper.Map<OrganizationDTO>(organization);
     }
 
-    public bool Delete(int id)
+    public async Task<bool> Delete(int id)
     {
-        var organization = repository.GetById(id);
+        var organization = await repository.GetById(id);
         if (organization == null)
         {
             return false;
         }
-        repository.Delete(organization);
+        await repository.Delete(organization);
         return true;
     }
 
-    public OrganizationDTO? Update(int id, OrganizationCreateDTO updatedOrganization)
+    public async Task<OrganizationDTO?> Update(int id, OrganizationCreateDTO updatedOrganization)
     {
-        var organization = repository.GetById(id);
+        var organization = await repository.GetById(id);
         if (organization == null)
         {
             return null;
@@ -39,6 +47,6 @@ public class OrganizationService(IEntityRepository<Organization> repository, IMa
         organization.Address = updatedOrganization.Address;
         organization.Name = updatedOrganization.Name;
         organization.Geometry = (Polygon)wktReader.Read(updatedOrganization.Geometry);
-        return mapper.Map<OrganizationDTO>(repository.Update(organization));
+        return mapper.Map<OrganizationDTO>(await repository.Update(organization));
     }
 }

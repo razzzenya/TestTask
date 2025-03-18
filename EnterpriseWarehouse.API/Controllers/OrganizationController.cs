@@ -17,9 +17,9 @@ public class OrganizationController(IEntityService<OrganizationDTO, Organization
     /// <returns>Коллекция объектов <see cref="OrganizationDTO"/>.</returns>
     /// <response code="200">Список организаций успешно возвращён.</response>
     [HttpGet]
-    public ActionResult<IEnumerable<OrganizationDTO>> Get()
+    public async Task<ActionResult<IEnumerable<OrganizationDTO>>> Get()
     {
-        return Ok(service.GetAll());
+        return Ok(await service.GetAll());
     }
 
     /// <summary>
@@ -30,9 +30,9 @@ public class OrganizationController(IEntityService<OrganizationDTO, Organization
     /// <response code="200">Организация найдена и информация успешно возвращена.</response>
     /// <response code="404">Организация с указанным идентификатором не найдена.</response>
     [HttpGet("{id}")]
-    public ActionResult<OrganizationDTO> Get(int id)
+    public async Task<ActionResult<OrganizationDTO>> Get(int id)
     {
-        var organization = service.GetById(id);
+        var organization = await service.GetById(id);
         if (organization == null)
         {
             return NotFound();
@@ -47,9 +47,9 @@ public class OrganizationController(IEntityService<OrganizationDTO, Organization
     /// <returns>Объект <see cref="OrganizationDTO"/>, представляющий добавленную организацию.</returns>
     /// <response code="200">Организация успешно добавлена.</response>
     [HttpPost]
-    public ActionResult<OrganizationDTO> Post(OrganizationCreateDTO newOrganization)
+    public async Task<ActionResult<OrganizationDTO>> Post(OrganizationCreateDTO newOrganization)
     {
-        var result = service.Add(newOrganization);
+        var result = await service.Add(newOrganization);
         return Ok(result);
     }
 
@@ -62,9 +62,9 @@ public class OrganizationController(IEntityService<OrganizationDTO, Organization
     /// <response code="200">Организация успешно обновлена.</response>
     /// <response code="404">Организация с указанным идентификатором не найдена.</response>
     [HttpPut("{id}")]
-    public ActionResult<OrganizationDTO> Put(int id, OrganizationCreateDTO newOrganization)
+    public async Task<ActionResult<OrganizationDTO>> Put(int id, OrganizationCreateDTO newOrganization)
     {
-        var result = service.Update(id, newOrganization);
+        var result = await service.Update(id, newOrganization);
         if (result == null)
         {
             return NotFound();
@@ -80,9 +80,9 @@ public class OrganizationController(IEntityService<OrganizationDTO, Organization
     /// <response code="200">Организация успешно удалена.</response>
     /// <response code="404">Организация с указанным идентификатором не найдена.</response>
     [HttpDelete("{id}")]
-    public ActionResult Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-        var result = service.Delete(id);
+        var result = await service.Delete(id);
         if (!result)
         {
             return NotFound();

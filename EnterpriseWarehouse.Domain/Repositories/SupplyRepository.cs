@@ -6,39 +6,40 @@ namespace EnterpriseWarehouse.Domain.Repositories;
 
 public class SupplyRepository(WarehouseContext context) : IEntityRepository<Supply>
 {
-    public IEnumerable<Supply> GetAll()
+    public async Task<IEnumerable<Supply>> GetAll()
     {
-        return context.Supplies
-            .Include(s => s.Product)
-            .Include(s => s.Organization);
-    }
-
-    public Supply? GetById(int id)
-    {
-        return context.Supplies
+        return await context.Supplies
             .Include(s => s.Product)
             .Include(s => s.Organization)
-            .FirstOrDefault(s => s.Id == id);
+            .ToListAsync();
     }
 
-    public Supply Add(Supply newSupply)
+    public async Task<Supply?> GetById(int id)
+    {
+        return await context.Supplies
+            .Include(s => s.Product)
+            .Include(s => s.Organization)
+            .FirstOrDefaultAsync(s => s.Id == id);
+    }
+
+    public async Task<Supply> Add(Supply newSupply)
     {
         var supply = context.Supplies.Add(newSupply).Entity;
-        context.SaveChanges();
+        await context.SaveChangesAsync();
         return supply;
     }
 
-    public void Delete(Supply supply)
+    public async Task Delete(Supply supply)
     {
         context.Supplies.Remove(supply);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
     }
 
-    public Supply Update(Supply updatedSupply)
+    public async Task<Supply> Update(Supply updatedSupply)
     {
         var entry = context.Entry(updatedSupply);
         entry.State = EntityState.Modified;
-        context.SaveChanges();
+        await context.SaveChangesAsync();
         return entry.Entity;
     }
 }

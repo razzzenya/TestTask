@@ -7,14 +7,22 @@ namespace EnterpriseWarehouse.API.Services;
 
 public class SupplyService(IEntityRepository<Supply> supplyRepository, IEntityRepository<Organization> organizationRepository, IEntityRepository<Product> productRepository, IMapper mapper) : IEntityService<SupplyDTO, SupplyCreateDTO>
 {
-    public IEnumerable<SupplyDTO> GetAll() => supplyRepository.GetAll().Select(mapper.Map<SupplyDTO>);
-
-    public SupplyDTO? GetById(int id) => mapper.Map<SupplyDTO>(supplyRepository.GetById(id));
-
-    public SupplyDTO? Add(SupplyCreateDTO newSupply)
+    public async Task<IEnumerable<SupplyDTO>> GetAll()
     {
-        var organization = organizationRepository.GetById(newSupply.OrganizationId);
-        var product = productRepository.GetById(newSupply.ProductId);
+       var supplies = await supplyRepository.GetAll();
+       return supplies.Select(mapper.Map<SupplyDTO>);
+    }
+
+    public async Task<SupplyDTO?> GetById(int id)
+    {
+        var supply = await supplyRepository.GetById(id);
+        return mapper.Map<SupplyDTO>(supply);
+    }
+
+    public async Task<SupplyDTO?> Add(SupplyCreateDTO newSupply)
+    {
+        var organization = await organizationRepository.GetById(newSupply.OrganizationId);
+        var product = await productRepository.GetById(newSupply.ProductId);
         if (organization == null || product == null)
         {
             return null;
@@ -26,29 +34,29 @@ public class SupplyService(IEntityRepository<Supply> supplyRepository, IEntityRe
             SupplyDate = newSupply.SupplyDate,
             Quantity = newSupply.Quantity,
         };
-        return mapper.Map<SupplyDTO>(supplyRepository.Add(supply));
+        return mapper.Map<SupplyDTO>(await supplyRepository.Add(supply));
     }
 
-    public bool Delete(int id)
+    public async Task<bool> Delete(int id)
     {
-        var supply = supplyRepository.GetById(id);
+        var supply = await supplyRepository.GetById(id);
         if (supply == null)
         {
             return false;
         }
-        supplyRepository.Delete(supply);
+        await supplyRepository.Delete(supply);
         return true;
     }
 
-    public SupplyDTO? Update(int id, SupplyCreateDTO updatedSupply)
+    public async Task<SupplyDTO?> Update(int id, SupplyCreateDTO updatedSupply)
     {
-        var supply = supplyRepository.GetById(id);
+        var supply = await supplyRepository.GetById(id);
         if (supply == null)
         {
             return null;
         }
-        var product = productRepository.GetById(updatedSupply.ProductId);
-        var organization = organizationRepository.GetById(updatedSupply.OrganizationId);
+        var product = await productRepository.GetById(updatedSupply.ProductId);
+        var organization = await organizationRepository.GetById(updatedSupply.OrganizationId);
         if (product == null || organization == null)
         {
             return null;
@@ -57,6 +65,6 @@ public class SupplyService(IEntityRepository<Supply> supplyRepository, IEntityRe
         supply.Organization = organization;
         supply.SupplyDate = updatedSupply.SupplyDate;
         supply.Quantity = updatedSupply.Quantity;
-        return mapper.Map<SupplyDTO>(supplyRepository.Update(supply));
+        return mapper.Map<SupplyDTO>(await supplyRepository.Update(supply));
     }
 }

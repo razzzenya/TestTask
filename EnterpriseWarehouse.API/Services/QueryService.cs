@@ -7,30 +7,33 @@ namespace EnterpriseWarehouse.API.Services;
 
 public class QueryService(IEntityRepository<Organization> organizationRepository, IEntityRepository<Cell> cellRepository, IEntityRepository<Supply> supplyRepository, IMapper mapper) : IQueryService
 {
-    public List<ProductDTO> GetAllProductsSortedByName()
+    public async Task<List<ProductDTO>> GetAllProductsSortedByName()
     {
-        return cellRepository.GetAll()
-            .OrderBy(c => c.Product?.Name)
-            .Select(c => mapper.Map<ProductDTO>(c.Product))
-            .ToList();
+        var cells = await cellRepository.GetAll();
+        return cells.OrderBy(c => c.Product?.Name)
+                .Select(c => mapper.Map<ProductDTO>(c.Product))
+                .ToList();
     }
 
-    public List<ProductDTO> GetProductsRecieveOnDate(string name, DateTime date)
+    public async Task<List<ProductDTO>> GetProductsRecieveOnDate(string name, DateTime date)
     {
-        return supplyRepository.GetAll()
+        var supplies = await supplyRepository.GetAll();
+        return supplies
             .Where(s => s.Organization.Name == name && s.SupplyDate.Date == date.Date)
             .Select(s => mapper.Map<ProductDTO>(s.Product))
             .ToList();
     }
 
-    public List<CellDTO> GetCurrentWarehouseState()
+    public async Task<List<CellDTO>> GetCurrentWarehouseState()
     {
-        return mapper.Map<List<CellDTO>>(cellRepository.GetAll());
+        var cells = await cellRepository.GetAll();
+        return mapper.Map<List<CellDTO>>(cells);
     }
 
-    public List<OrganizationMaxSuppliesDTO> GetMaxSuppliesOrganizations(DateTime startDate, DateTime endDate)
+    public async Task<List<OrganizationMaxSuppliesDTO>> GetMaxSuppliesOrganizations(DateTime startDate, DateTime endDate)
     {
-        var organizationsWithMaxSupply = supplyRepository.GetAll()
+        var supplies = await supplyRepository.GetAll();
+        var organizationsWithMaxSupply = supplies
             .Where(s => s.SupplyDate >= startDate && s.SupplyDate <= endDate)
             .GroupBy(s => s.Organization)
             .Select(g => new
@@ -62,9 +65,10 @@ public class QueryService(IEntityRepository<Organization> organizationRepository
         return result;
     }
 
-    public List<ProductQuantityDTO> GetFiveMaxQuantityProducts()
+    public async Task<List<ProductQuantityDTO>> GetFiveMaxQuantityProducts()
     {
-        return cellRepository.GetAll()
+        var cells = await cellRepository.GetAll();
+        return cells
             .GroupBy(c => c.Product?.Name)
             .Select(g => new ProductQuantityDTO
             {
@@ -76,9 +80,10 @@ public class QueryService(IEntityRepository<Organization> organizationRepository
             .ToList();
     }
 
-    public List<ProductSupplyToOrganizationsDTO> GetQuantityProductSupplyToOrganiztions()
+    public async Task<List<ProductSupplyToOrganizationsDTO>> GetQuantityProductSupplyToOrganiztions()
     {
-        return supplyRepository.GetAll()
+        var supplies = await supplyRepository.GetAll();
+        return supplies
             .GroupBy(p => new { ProductName = p.Product.Name, OrganizationName = p.Organization.Name })
             .Select(g => new ProductSupplyToOrganizationsDTO
             {
@@ -90,9 +95,9 @@ public class QueryService(IEntityRepository<Organization> organizationRepository
             .ToList();
     }
 
-    public List<OrganizationDistanceDTO> GetNearestOrganizations()
+    public async Task<List<OrganizationDistanceDTO>> GetNearestOrganizations()
     {
-        var organizations = organizationRepository.GetAll().ToList();
+        var organizations = await organizationRepository.GetAll();
         var result = new List<OrganizationDistanceDTO>();
 
         foreach (var org in organizations)
@@ -114,9 +119,10 @@ public class QueryService(IEntityRepository<Organization> organizationRepository
         return result;
     }
 
-    public List<OrganizationAreaDTO> GetTop5OrganizationsByArea()
+    public async Task<List<OrganizationAreaDTO>> GetTop5OrganizationsByArea()
     {
-        return organizationRepository.GetAll()
+        var organizations = await organizationRepository.GetAll();
+        return organizations
         .Select(org => new OrganizationAreaDTO
         {
             Id = org.Id,
@@ -128,9 +134,9 @@ public class QueryService(IEntityRepository<Organization> organizationRepository
         .ToList();
     }
 
-    public List<OrganizationRemoteDistanceDTO> GetMostRemoteOrganizations()
+    public async Task<List<OrganizationRemoteDistanceDTO>> GetMostRemoteOrganizations()
     {
-        var organizations = organizationRepository.GetAll().ToList();
+        var organizations = await organizationRepository.GetAll();
         return organizations
         .Select(org => new OrganizationRemoteDistanceDTO
         {

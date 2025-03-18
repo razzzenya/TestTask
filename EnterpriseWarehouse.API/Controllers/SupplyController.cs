@@ -17,9 +17,9 @@ public class SupplyController(IEntityService<SupplyDTO, SupplyCreateDTO> service
     /// <returns>Коллекция объектов <see cref="SupplyDTO"/>.</returns>
     /// <response code="200">Список поставок успешно возвращён.</response>
     [HttpGet]
-    public ActionResult<IEnumerable<SupplyDTO>> Get()
+    public async Task<ActionResult<IEnumerable<SupplyDTO>>> Get()
     {
-        return Ok(service.GetAll());
+        return Ok(await service.GetAll());
     }
 
     /// <summary>
@@ -30,9 +30,9 @@ public class SupplyController(IEntityService<SupplyDTO, SupplyCreateDTO> service
     /// <response code="200">Поставка найдена и информация успешно возвращена.</response>
     /// <response code="404">Поставка с указанным идентификатором не найдена.</response>
     [HttpGet("{id}")]
-    public ActionResult<SupplyDTO> Get(int id)
+    public async Task<ActionResult<SupplyDTO>> Get(int id)
     {
-        var supply = service.GetById(id);
+        var supply = await service.GetById(id);
         if (supply == null)
         {
             return NotFound();
@@ -48,9 +48,9 @@ public class SupplyController(IEntityService<SupplyDTO, SupplyCreateDTO> service
     /// <response code="200">Поставка успешно добавлена.</response>
     /// <response code="400">Ошибка при добавлении поставки.</response>
     [HttpPost]
-    public ActionResult<SupplyDTO> Post(SupplyCreateDTO newSupply)
+    public async Task<ActionResult<SupplyDTO>> Post(SupplyCreateDTO newSupply)
     {
-        var result = service.Add(newSupply);
+        var result = await service.Add(newSupply);
         if (result == null)
         {
             return BadRequest();
@@ -67,9 +67,9 @@ public class SupplyController(IEntityService<SupplyDTO, SupplyCreateDTO> service
     /// <response code="200">Поставка успешно обновлена.</response>
     /// <response code="404">Поставка с указанным идентификатором не найдена.</response>
     [HttpPut("{id}")]
-    public ActionResult<SupplyDTO> Put(int id, SupplyCreateDTO newSupply)
+    public async Task<ActionResult<SupplyDTO>> Put(int id, SupplyCreateDTO newSupply)
     {
-        var result = service.Update(id, newSupply);
+        var result = await service.Update(id, newSupply);
         if (result == null)
         {
             return NotFound();
@@ -85,9 +85,9 @@ public class SupplyController(IEntityService<SupplyDTO, SupplyCreateDTO> service
     /// <response code="200">Поставка успешно удалена.</response>
     /// <response code="404">Поставка с указанным идентификатором не найдена.</response>
     [HttpDelete("{id}")]
-    public ActionResult Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-        var result = service.Delete(id);
+        var result = await service.Delete(id);
         if (!result)
         {
             return NotFound();

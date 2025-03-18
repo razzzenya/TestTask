@@ -6,37 +6,38 @@ namespace EnterpriseWarehouse.Domain.Repositories;
 
 public class CellRepository(WarehouseContext context) : IEntityRepository<Cell>
 {
-    public IEnumerable<Cell> GetAll()
+    public async Task<IEnumerable<Cell>> GetAll()
     {
-        return context.Cells
-             .Include(s => s.Product);
+        return await context.Cells
+             .Include(s => s.Product)
+             .ToListAsync();
     }
 
-    public Cell? GetById(int id)
+    public async Task<Cell?> GetById(int id)
     {
-        return context.Cells
+        return await context.Cells
             .Include(c => c.Product)
-            .FirstOrDefault(c => c.Id == id);
+            .FirstOrDefaultAsync(c => c.Id == id);
     }
 
-    public Cell Add(Cell newCell)
+    public async Task<Cell> Add(Cell newCell)
     {
-        var cell = context.Cells.Add(newCell).Entity;
-        context.SaveChanges();
-        return cell;
+        var cell = await context.Cells.AddAsync(newCell);
+        await context.SaveChangesAsync();
+        return cell.Entity;
     }
 
-    public void Delete(Cell cell)
+    public async Task Delete(Cell cell)
     {
         context.Cells.Remove(cell);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
     }
 
-    public Cell Update(Cell updatedCell)
+    public async Task<Cell> Update(Cell updatedCell)
     {
         var entry = context.Entry(updatedCell);
         entry.State = EntityState.Modified;
-        context.SaveChanges();
+        await context.SaveChangesAsync();
         return entry.Entity;
     }
 }

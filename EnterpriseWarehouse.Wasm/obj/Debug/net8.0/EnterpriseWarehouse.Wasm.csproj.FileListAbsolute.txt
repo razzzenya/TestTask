@@ -2120,3 +2120,4 @@ C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\E
 C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\refint\EnterpriseWarehouse.Wasm.dll
 C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\EnterpriseWarehouse.Wasm.pdb
 C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\ref\EnterpriseWarehouse.Wasm.dll
+C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\EnterpriseWarehouse.Wasm.sourcelink.json

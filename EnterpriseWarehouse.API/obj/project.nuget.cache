@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Vg2kZ9GIcsg=",
+  "dgSpecHash": "1m99ef48HSc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\bucki\\Source\\Repos\\TestTask\\EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj",
+  "projectFilePath": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bucki\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\bucki\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
