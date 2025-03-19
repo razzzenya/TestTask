@@ -1,0 +1,9 @@
+﻿.suggestion-list {
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    background: rgb(192, 192, 192);
+    z-index: 1000;
+    border: solid 1px;
+    margin-left: 193px;
+}

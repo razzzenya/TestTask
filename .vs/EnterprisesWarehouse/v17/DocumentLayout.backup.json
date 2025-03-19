@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\bucki\\source\\repos\\TestTask\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\controllers\\cellcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\controllers\\cellcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.wasm\\ui\\pages\\productsrecievedondate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|solutionrelative:enterprisewarehouse.wasm\\ui\\pages\\productsrecievedondate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9AA95620-BBF7-4289-95B9-7113271BF8BA}|EnterpriseWarehouse.Domain\\EnterpriseWarehouse.Domain.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.domain\\repositories\\organizationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AA95620-BBF7-4289-95B9-7113271BF8BA}|EnterpriseWarehouse.Domain\\EnterpriseWarehouse.Domain.csproj|solutionrelative:enterprisewarehouse.domain\\repositories\\organizationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.wasm\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|solutionrelative:enterprisewarehouse.wasm\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.wasm\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|solutionrelative:enterprisewarehouse.wasm\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,48 +22,51 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductsRecievedOnDate.razor",
+              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\Ui\\Pages\\ProductsRecievedOnDate.razor",
+              "RelativeDocumentMoniker": "EnterpriseWarehouse.Wasm\\Ui\\Pages\\ProductsRecievedOnDate.razor",
+              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\Ui\\Pages\\ProductsRecievedOnDate.razor",
+              "RelativeToolTip": "EnterpriseWarehouse.Wasm\\Ui\\Pages\\ProductsRecievedOnDate.razor",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-19T16:09:45.029Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CellController.cs",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Controllers\\CellController.cs",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Controllers\\CellController.cs",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Controllers\\CellController.cs",
-              "RelativeToolTip": "EnterpriseWarehouse.API\\Controllers\\CellController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T18:25:24.636Z",
+              "DocumentIndex": 2,
+              "Title": "styles.css",
+              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\wwwroot\\css\\styles.css",
+              "RelativeDocumentMoniker": "EnterpriseWarehouse.Wasm\\wwwroot\\css\\styles.css",
+              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\wwwroot\\css\\styles.css",
+              "RelativeToolTip": "EnterpriseWarehouse.Wasm\\wwwroot\\css\\styles.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-19T16:43:53.055Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\ProductService.cs",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Services\\ProductService.cs",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\ProductService.cs",
-              "RelativeToolTip": "EnterpriseWarehouse.API\\Services\\ProductService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T18:13:27.128Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "OrganizationRepository.cs",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Domain\\Repositories\\OrganizationRepository.cs",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.Domain\\Repositories\\OrganizationRepository.cs",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Domain\\Repositories\\OrganizationRepository.cs",
-              "RelativeToolTip": "EnterpriseWarehouse.Domain\\Repositories\\OrganizationRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAuwBMAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T18:13:03.263Z"
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "EnterpriseWarehouse.Wasm\\wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\wwwroot\\index.html",
+              "RelativeToolTip": "EnterpriseWarehouse.Wasm\\wwwroot\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-03-19T16:37:51.843Z",
+              "EditorCaption": ""
             }
           ]
         },

@@ -32,7 +32,16 @@
 
 <Div>
     <label>Название организации:</label>
-    <TextEdit @bind-Text="@Name"/>
+    <InputText @bind-Value="SelectedOrganization" @oninput="FilterOrganizations" placeholder="Введите название..." />
+
+    <ul class="suggestion-list" hidden="@(!IsSuggestionsVisible)">
+        @foreach (var org in FilteredOrganizations)
+        {
+            <li class="list-group-item" @onclick="() => SelectOrganization(org.Name)">
+                @org.Name
+            </li>
+        }
+    </ul>
 
     <label>Дата:</label>
     <InputDate @bind-Value="Date" />
@@ -44,18 +53,51 @@
     private IEnumerable<ProductDTO> Products { get; set; } = [];
     private IEnumerable<ProductDTO> PagedProducts { get; set; } = [];
     private DateTime Date { get; set; } = DateTime.Today;
-    private string Name { get; set; } = "";
     private bool IsAlertVisible = false;
     private int CurrentPage { get; set; } = 1;
     private int PageSize { get; set; } = 20;
     private int TotalPages => (int)Math.Ceiling((double)Products.Count() / PageSize);
+    private IEnumerable<OrganizationDTO> Organizations { get; set; } = [];
+    private IEnumerable<OrganizationDTO> FilteredOrganizations { get; set; } = [];
+    private string SelectedOrganization { get; set; } = "";
+    private bool IsSuggestionsVisible { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Organizations = await EnterpriseWarehouseApi.GetAllOrganizations();
+        FilteredOrganizations = Organizations;
+    }
+
+    private void FilterOrganizations(ChangeEventArgs e)
+    {
+        string input = e.Value?.ToString() ?? "";
+        SelectedOrganization = input;
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            FilteredOrganizations = [];
+            IsSuggestionsVisible = false;
+            return;
+        }
+
+        FilteredOrganizations = Organizations
+            .Where(org => org.Name.Contains(input, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+
+        IsSuggestionsVisible = FilteredOrganizations.Any();
+    }
+
+    private void SelectOrganization(string name)
+    {
+        SelectedOrganization = name;
+        IsSuggestionsVisible = false;
+    }
 
 
     private async Task RefreshProductsCollection()
     {
         try
         {
-            Products = await EnterpriseWarehouseApi.GetProductsRecieveOnDate(Name, Date.Date);
+            Products = await EnterpriseWarehouseApi.GetProductsRecieveOnDate(SelectedOrganization, Date.Date);
             UpdatePagedProducts();
             IsAlertVisible = false;
         }
