@@ -1,9 +1,0 @@
-2025-03-17 18:13:21.491 +04:00 [INF] Now listening on: https://localhost:7089
-2025-03-17 18:13:21.547 +04:00 [INF] Now listening on: http://localhost:5220
-2025-03-17 18:13:21.663 +04:00 [INF] Application started. Press Ctrl+C to shut down.
-2025-03-17 18:13:21.665 +04:00 [INF] Hosting environment: Development
-2025-03-17 18:13:21.666 +04:00 [INF] Content root path: C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.API
-2025-03-17 18:13:23.976 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7089/ - null null
-2025-03-17 18:13:24.159 +04:00 [INF] HTTP GET / responded 404 in 57.9475 ms
-2025-03-17 18:13:24.165 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7089/ - 404 0 null 196.6921ms
-2025-03-17 18:13:24.170 +04:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7089/, Response status code: 404

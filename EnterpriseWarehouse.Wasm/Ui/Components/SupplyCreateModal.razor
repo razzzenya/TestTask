@@ -68,7 +68,7 @@
     {
         await LoadProductsAsync();
         await LoadOrganizationsAsync();
-        NewSupply.SupplyDate = DateTime.Now;
+        NewSupply.SupplyDate = DateTime.UtcNow;
         await SupplyModal.Show();
     }
 
@@ -83,6 +83,7 @@
     {
         try
         {
+            NewSupply.SupplyDate = DateTime.SpecifyKind(NewSupply.SupplyDate, DateTimeKind.Utc);
             await EnterpriseWarehouseApi.CreateSupply(NewSupply);
             await CloseSupplyModalAsync();
             await OnSupplyAdded.InvokeAsync();
