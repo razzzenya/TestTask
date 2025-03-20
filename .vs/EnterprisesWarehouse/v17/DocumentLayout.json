@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\bucki\\source\\repos\\TestTask\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\controllers\\organizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\controllers\\organizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AA95620-BBF7-4289-95B9-7113271BF8BA}|EnterpriseWarehouse.Domain\\EnterpriseWarehouse.Domain.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.domain\\context\\warehousecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AA95620-BBF7-4289-95B9-7113271BF8BA}|EnterpriseWarehouse.Domain\\EnterpriseWarehouse.Domain.csproj|solutionrelative:enterprisewarehouse.domain\\context\\warehousecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\mapper\\mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\mapper\\mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9AA95620-BBF7-4289-95B9-7113271BF8BA}|EnterpriseWarehouse.Domain\\EnterpriseWarehouse.Domain.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.domain\\context\\dataprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AA95620-BBF7-4289-95B9-7113271BF8BA}|EnterpriseWarehouse.Domain\\EnterpriseWarehouse.Domain.csproj|solutionrelative:enterprisewarehouse.domain\\context\\dataprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\services\\organizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\services\\organizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\dto\\organizationcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\dto\\organizationcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\services\\queryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\services\\queryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,66 +31,41 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "OrganizationService.cs",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\OrganizationService.cs",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Services\\OrganizationService.cs",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\OrganizationService.cs",
-              "RelativeToolTip": "EnterpriseWarehouse.API\\Services\\OrganizationService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Program.cs",
+              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Program.cs",
+              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Program.cs",
+              "RelativeToolTip": "EnterpriseWarehouse.API\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T13:44:01.376Z",
+              "WhenOpened": "2025-03-20T15:33:05.052Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "OrganizationController.cs",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Controllers\\OrganizationController.cs",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Controllers\\OrganizationController.cs",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Controllers\\OrganizationController.cs",
-              "RelativeToolTip": "EnterpriseWarehouse.API\\Controllers\\OrganizationController.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAgwFkAAAAJAAAAAAAAAA==",
+              "Title": "WarehouseContext.cs",
+              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Domain\\Context\\WarehouseContext.cs",
+              "RelativeDocumentMoniker": "EnterpriseWarehouse.Domain\\Context\\WarehouseContext.cs",
+              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Domain\\Context\\WarehouseContext.cs",
+              "RelativeToolTip": "EnterpriseWarehouse.Domain\\Context\\WarehouseContext.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA1wB8AAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T18:44:47.322Z",
+              "WhenOpened": "2025-03-20T14:26:00.902Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Mapper.cs",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Mapper\\Mapper.cs",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Mapper\\Mapper.cs",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Mapper\\Mapper.cs",
-              "RelativeToolTip": "EnterpriseWarehouse.API\\Mapper\\Mapper.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwBUAAAAFAAAAAAAAAA==",
+              "Title": "DataProvider.cs",
+              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Domain\\Context\\DataProvider.cs",
+              "RelativeDocumentMoniker": "EnterpriseWarehouse.Domain\\Context\\DataProvider.cs",
+              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Domain\\Context\\DataProvider.cs",
+              "RelativeToolTip": "EnterpriseWarehouse.Domain\\Context\\DataProvider.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwA4AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T13:18:30.634Z",
+              "WhenOpened": "2025-03-20T14:25:58.415Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OrganizationCreateDTO.cs",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\DTO\\OrganizationCreateDTO.cs",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\DTO\\OrganizationCreateDTO.cs",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\DTO\\OrganizationCreateDTO.cs",
-              "RelativeToolTip": "EnterpriseWarehouse.API\\DTO\\OrganizationCreateDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T18:38:29.761Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "QueryService.cs",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\QueryService.cs",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Services\\QueryService.cs",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\QueryService.cs",
-              "RelativeToolTip": "EnterpriseWarehouse.API\\Services\\QueryService.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAkwDYAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T18:21:14.743Z"
             }
           ]
         },

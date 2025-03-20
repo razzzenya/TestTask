@@ -5,30 +5,42 @@ namespace EnterpriseWarehouse.Domain.Context;
 
 public class DataProvider
 {
+    private static readonly Envelope SamaraRegionEnvelope = new(5335671.7541069425642490, 5851651.2207264527678490, 6759127.5581133114174008, 7299460.4899313366040587);
     private readonly GeometryFactory _geometryFactory = new(new PrecisionModel(), 3857);
     public required List<Organization> organizations;
     public required List<Product> products;
     public required List<Cell> cells;
     public required List<Supply> supplies;
+
+    public Polygon GeneratePolygon()
+    {
+        var random = new Random();
+        double x = SamaraRegionEnvelope.MinX + random.NextDouble() * (SamaraRegionEnvelope.MaxX - SamaraRegionEnvelope.MinX);
+        double y = SamaraRegionEnvelope.MinY + random.NextDouble() * (SamaraRegionEnvelope.MaxY - SamaraRegionEnvelope.MinY);
+        double width = random.NextDouble() * 1000 + 500;
+        double height = random.NextDouble() * 1000 + 500;
+
+        var coordinates = new Coordinate[]
+        {
+            new Coordinate(x, y),
+            new Coordinate(x + width, y),
+            new Coordinate(x + width, y + height),
+            new Coordinate(x, y + height),
+            new Coordinate(x, y)
+        };
+        return _geometryFactory.CreatePolygon(coordinates);
+    }
+
     public void GenerateOrganizations()
     {
         for (int i = 1; i <= 500; i++)
         {
-
-            var polygon = _geometryFactory.CreatePolygon(
-            [
-                new(i, i),
-                new(i + 1, i),
-                new(i + 1, i + 1),
-                new(i, i + 1),
-                new(i, i)
-            ]);
             organizations.Add(new Organization
             {
                 Id = i,
                 Name = $"Organization {i}",
                 Address = $"Address {i}",
-                Geometry = polygon
+                Geometry = GeneratePolygon()
             }
             );
         }
