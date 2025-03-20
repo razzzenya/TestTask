@@ -1,6 +1,7 @@
 ﻿using EnterpriseWarehouse.API.DTO;
 using EnterpriseWarehouse.API.Services;
 using Microsoft.AspNetCore.Mvc;
+using NetTopologySuite.Features;
 
 namespace EnterpriseWarehouse.API.Controllers;
 
@@ -17,7 +18,7 @@ public class OrganizationController(IEntityService<OrganizationDTO, Organization
     /// <returns>Коллекция объектов <see cref="OrganizationDTO"/>.</returns>
     /// <response code="200">Список организаций успешно возвращён.</response>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<OrganizationDTO>>> Get()
+    public async Task<ActionResult<FeatureCollection>> Get()
     {
         return Ok(await service.GetAll());
     }
@@ -30,7 +31,7 @@ public class OrganizationController(IEntityService<OrganizationDTO, Organization
     /// <response code="200">Организация найдена и информация успешно возвращена.</response>
     /// <response code="404">Организация с указанным идентификатором не найдена.</response>
     [HttpGet("{id}")]
-    public async Task<ActionResult<OrganizationDTO>> Get(int id)
+    public async Task<ActionResult<Feature>> Get(int id)
     {
         var organization = await service.GetById(id);
         if (organization == null)
@@ -47,7 +48,7 @@ public class OrganizationController(IEntityService<OrganizationDTO, Organization
     /// <returns>Объект <see cref="OrganizationDTO"/>, представляющий добавленную организацию.</returns>
     /// <response code="200">Организация успешно добавлена.</response>
     [HttpPost]
-    public async Task<ActionResult<OrganizationDTO>> Post(OrganizationCreateDTO newOrganization)
+    public async Task<ActionResult<Feature>> Post(OrganizationCreateDTO newOrganization)
     {
         var result = await service.Add(newOrganization);
         return Ok(result);
@@ -62,7 +63,7 @@ public class OrganizationController(IEntityService<OrganizationDTO, Organization
     /// <response code="200">Организация успешно обновлена.</response>
     /// <response code="404">Организация с указанным идентификатором не найдена.</response>
     [HttpPut("{id}")]
-    public async Task<ActionResult<OrganizationDTO>> Put(int id, OrganizationCreateDTO newOrganization)
+    public async Task<ActionResult<Feature>> Put(int id, OrganizationCreateDTO newOrganization)
     {
         var result = await service.Update(id, newOrganization);
         if (result == null)

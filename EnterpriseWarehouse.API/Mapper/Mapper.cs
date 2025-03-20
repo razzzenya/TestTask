@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EnterpriseWarehouse.API.DTO;
 using EnterpriseWarehouse.Domain.Entities;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 
@@ -8,7 +9,7 @@ namespace EnterpriseWarehouse.API.Mapper;
 
 public class MappingProfile : Profile
 {
-    private Polygon WktToPolygon(string wkt)
+    private Polygon? WktToPolygon(string wkt)
     {
         if (string.IsNullOrEmpty(wkt))
         {
@@ -25,8 +26,24 @@ public class MappingProfile : Profile
         CreateMap<Organization, OrganizationDTO>()
               .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => src.Geometry.ToText())).ReverseMap();
 
-        //CreateMap<Organization, OrganizationDTO>().ReverseMap();
-        //CreateMap<Organization, OrganizationCreateDTO>().ReverseMap();
+        CreateMap<Organization, IFeature>()
+            .ConstructUsing(src => new Feature
+            {
+                Geometry = src.Geometry,
+                Attributes = new AttributesTable
+                {
+                    { "Id", src.Id },
+                    { "Name", src.Name },
+                    { "Address", src.Address }
+                }
+            });
+
+        CreateMap<IFeature, Organization>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => (int)src.Attributes["Id"]))
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => (string)src.Attributes["Name"]))
+            .ForMember(dest => dest.Address, opt => opt.MapFrom(src => (string)src.Attributes["Address"]))
+            .ForMember(dest => dest.Geometry, opt => opt.MapFrom(src => (Polygon)src.Geometry));
+
 
         CreateMap<Product, ProductDTO>().ReverseMap();
         CreateMap<Product, ProductCreateDTO>().ReverseMap();

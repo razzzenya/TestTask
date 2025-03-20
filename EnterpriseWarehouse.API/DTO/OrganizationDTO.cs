@@ -1,4 +1,6 @@
-﻿namespace EnterpriseWarehouse.API.DTO;
+﻿using NetTopologySuite.Features;
+
+namespace EnterpriseWarehouse.API.DTO;
 /// <summary>
 /// DTO организации
 /// </summary>

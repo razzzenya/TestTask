@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <OpenApiReference Include="Api\swagger.json" ClassName="EnterpriseWarehouseApi" CodeGenerator="NSwagCSharp" Namespace="EnterpriseWarehouse.Wasm.Api" />
+    <OpenApiReference Include="Api\swagger.json" ClassName="EnterpriseWarehouseApi" Namespace="EnterpriseWarehouse.Wasm.Api" />
   </ItemGroup>
 
   <ItemGroup>

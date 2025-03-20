@@ -41,6 +41,8 @@ public class QueryService(IEntityRepository<Organization> organizationRepository
                 Organization = g.Key,
                 TotalQuantity = g.Sum(s => s.Quantity)
             })
+            .OrderByDescending(o => o.TotalQuantity)
+            .Take(10)
             .ToList();
 
         if (organizationsWithMaxSupply.Count == 0)
@@ -51,7 +53,6 @@ public class QueryService(IEntityRepository<Organization> organizationRepository
         var maxQuantity = organizationsWithMaxSupply.Max(o => o.TotalQuantity);
 
         var result = organizationsWithMaxSupply
-            .Where(o => o.TotalQuantity == maxQuantity)
             .Select(o => new OrganizationMaxSuppliesDTO
             {
                 Id = o.Organization.Id,
