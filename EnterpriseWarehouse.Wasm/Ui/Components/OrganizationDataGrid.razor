@@ -15,15 +15,15 @@
     </CardHeader>
     <CardBody>
         <DataGrid TItem="OrganizationDTO"
-                  Data="PagedOrganizations"
-                  Responsive
-                  Striped
-                  PageSize="20">
+        Data="PagedOrganizations"
+        Responsive
+        Striped
+        PageSize="20">
             <DataGridColumns>
                 <DataGridColumn Width="150px"
-                                TItem="OrganizationDTO"
-                                Field="@nameof(OrganizationDTO.Id)"
-                                Caption="Действия">
+                TItem="OrganizationDTO"
+                Field="@nameof(OrganizationDTO.Id)"
+                Caption="Действия">
                     <DisplayTemplate>
                         <Dropdown>
                             <DropdownToggle Color="Color.Primary">
@@ -41,20 +41,20 @@
                     </DisplayTemplate>
                 </DataGridColumn>
                 <DataGridColumn TItem="OrganizationDTO"
-                                Field="@nameof(OrganizationDTO.Id)"
-                                Caption="Идентификатор организации">
+                Field="@nameof(OrganizationDTO.Id)"
+                Caption="Идентификатор организации">
                 </DataGridColumn>
                 <DataGridColumn TItem="OrganizationDTO"
-                                Field="@nameof(OrganizationDTO.Name)"
-                                Caption="Название">
+                Field="@nameof(OrganizationDTO.Name)"
+                Caption="Название">
                 </DataGridColumn>
                 <DataGridColumn TItem="OrganizationDTO"
-                                Field="@nameof(OrganizationDTO.Address)"
-                                Caption="Адрес">
+                Field="@nameof(OrganizationDTO.Address)"
+                Caption="Адрес">
                 </DataGridColumn>
                 <DataGridColumn TItem="OrganizationDTO"
-                                Field="@nameof(OrganizationDTO.Geometry)"
-                                Caption="Геометрия">
+                Field="@nameof(OrganizationDTO.Geometry)"
+                Caption="Геометрия">
                 </DataGridColumn>
             </DataGridColumns>
         </DataGrid>

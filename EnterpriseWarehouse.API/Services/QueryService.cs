@@ -5,14 +5,15 @@ using EnterpriseWarehouse.Domain.Repositories;
 
 namespace EnterpriseWarehouse.API.Services;
 
-public class QueryService(IEntityRepository<Organization> organizationRepository, IEntityRepository<Cell> cellRepository, IEntityRepository<Supply> supplyRepository, IMapper mapper) : IQueryService
+public class QueryService(IEntityRepository<Organization> organizationRepository, IEntityRepository<Product> productRepository,IEntityRepository<Cell> cellRepository, IEntityRepository<Supply> supplyRepository, IMapper mapper) : IQueryService
 {
     public async Task<List<ProductDTO>> GetAllProductsSortedByName()
     {
-        var cells = await cellRepository.GetAll();
-        return cells.OrderBy(c => c.Product?.Name)
-                .Select(c => mapper.Map<ProductDTO>(c.Product))
-                .ToList();
+        var products = await productRepository.GetAll();
+        return products
+            .OrderBy(p => p.Name)
+            .Select(p => mapper.Map<ProductDTO>(p))
+            .ToList();
     }
 
     public async Task<List<ProductDTO>> GetProductsRecieveOnDate(string name, DateTime date)
