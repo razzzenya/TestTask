@@ -2126,6 +2126,6 @@ C:\Users\bucki\source\repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\c
 C:\Users\bucki\source\repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\bucki\source\repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\staticwebassets\msbuild.EnterpriseWarehouse.Wasm.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\bucki\source\repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
-C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\compressed\n7meru1q7n-as77fjxg8q.gz
-C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\compressed\6fjpcb7v73-w4fk0j3u9y.gz
-C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\compressed\bjti6o9wm4-89bx0fmf2p.gz
+C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\compressed\n7meru1q7n-29esdo78x1.gz
+C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\compressed\6fjpcb7v73-eeq4bpi4zg.gz
+C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\obj\Debug\net8.0\compressed\bjti6o9wm4-pencxmeyni.gz

@@ -31,7 +31,8 @@ public class CellService(IEntityRepository<Cell> cellRepository, IEntityReposito
             Product = product,
             Quantity = newCell.Quantity,
         };
-        return mapper.Map<CellDTO>(cellRepository.Add(cell));
+        var addedCell = await cellRepository.Add(cell);
+        return mapper.Map<CellDTO>(addedCell);
     }
     public async Task<bool> Delete(int id)
     {
@@ -58,6 +59,7 @@ public class CellService(IEntityRepository<Cell> cellRepository, IEntityReposito
         }
         cell.Product = product;
         cell.Quantity = updatedCell.Quantity;
-        return mapper.Map<CellDTO>(cellRepository.Update(cell));
+        var newCell = await cellRepository.Update(cell);
+        return mapper.Map<CellDTO>(newCell);
     }
 }

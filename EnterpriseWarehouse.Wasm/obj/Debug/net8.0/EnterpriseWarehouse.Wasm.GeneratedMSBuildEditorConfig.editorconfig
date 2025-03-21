@@ -13,133 +13,133 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = EnterpriseWarehouse.Wasm
 build_property.RootNamespace = EnterpriseWarehouse.Wasm
-build_property.ProjectDir = C:\Users\bucki\source\repos\TestTask\EnterpriseWarehouse.Wasm\
+build_property.ProjectDir = C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\bucki\source\repos\TestTask\EnterpriseWarehouse.Wasm
+build_property.MSBuildProjectDirectory = C:\Users\bucki\Source\Repos\TestTask\EnterpriseWarehouse.Wasm
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/App.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/CellCreateModal.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/CellCreateModal.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xDZWxsQ3JlYXRlTW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/CellDataGrid.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/CellDataGrid.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xDZWxsRGF0YUdyaWQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/CellUpdateModal.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/CellUpdateModal.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xDZWxsVXBkYXRlTW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/OrganizationCreateModal.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/OrganizationCreateModal.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xPcmdhbml6YXRpb25DcmVhdGVNb2RhbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/OrganizationDataGrid.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/OrganizationDataGrid.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xPcmdhbml6YXRpb25EYXRhR3JpZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/OrganizationUpdateModal.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/OrganizationUpdateModal.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xPcmdhbml6YXRpb25VcGRhdGVNb2RhbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/ProductCreateModal.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/ProductCreateModal.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xQcm9kdWN0Q3JlYXRlTW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/ProductDataGrid.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/ProductDataGrid.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xQcm9kdWN0RGF0YUdyaWQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/ProductUpdateModal.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/ProductUpdateModal.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xQcm9kdWN0VXBkYXRlTW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/SupplyCreateModal.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/SupplyCreateModal.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xTdXBwbHlDcmVhdGVNb2RhbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/SupplyDataGrid.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/SupplyDataGrid.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xTdXBwbHlEYXRhR3JpZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/SupplyUpdateModal.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Components/SupplyUpdateModal.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcQ29tcG9uZW50c1xTdXBwbHlVcGRhdGVNb2RhbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/Cells.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/Cells.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcQ2VsbHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/FiveMaxQuantityProducts.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/FiveMaxQuantityProducts.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcRml2ZU1heFF1YW50aXR5UHJvZHVjdHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/Home.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/MaxSuppliesOrganizations.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/MaxSuppliesOrganizations.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcTWF4U3VwcGxpZXNPcmdhbml6YXRpb25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/NearestOrganizations.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/NearestOrganizations.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcTmVhcmVzdE9yZ2FuaXphdGlvbnMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/Organizations.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/Organizations.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcT3JnYW5pemF0aW9ucy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/Products.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/Products.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcUHJvZHVjdHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/ProductsRecievedOnDate.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/ProductsRecievedOnDate.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcUHJvZHVjdHNSZWNpZXZlZE9uRGF0ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/QuantityProductSupplyToOrganiztions.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/QuantityProductSupplyToOrganiztions.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcUXVhbnRpdHlQcm9kdWN0U3VwcGx5VG9Pcmdhbml6dGlvbnMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/RemoteOrganizations.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/RemoteOrganizations.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcUmVtb3RlT3JnYW5pemF0aW9ucy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/SortedProducts.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/SortedProducts.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcU29ydGVkUHJvZHVjdHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/Supplies.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/Supplies.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcU3VwcGxpZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/TopOrganizationsByArea.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/TopOrganizationsByArea.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcVG9wT3JnYW5pemF0aW9uc0J5QXJlYS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/WarehouseState.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Pages/WarehouseState.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcUGFnZXNcV2FyZWhvdXNlU3RhdGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/_Imports.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Layout/MainLayout.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcTGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-0phhezvfrl
 
-[C:/Users/bucki/source/repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Layout/NavMenu.razor]
+[C:/Users/bucki/Source/Repos/TestTask/EnterpriseWarehouse.Wasm/Ui/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = VWlcTGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-0gcifz2sx5

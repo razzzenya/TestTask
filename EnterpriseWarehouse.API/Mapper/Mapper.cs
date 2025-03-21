@@ -49,6 +49,7 @@ public class MappingProfile : Profile
         CreateMap<Product, ProductCreateDTO>().ReverseMap();
 
         CreateMap<Cell, CellDTO>().ReverseMap();
+        CreateMap<Cell, CellCreateDTO>().ReverseMap();
 
         CreateMap<Supply, SupplyDTO>().ReverseMap();
     }

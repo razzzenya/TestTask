@@ -65,6 +65,7 @@ public class SupplyService(IEntityRepository<Supply> supplyRepository, IEntityRe
         supply.Organization = organization;
         supply.SupplyDate = updatedSupply.SupplyDate;
         supply.Quantity = updatedSupply.Quantity;
-        return mapper.Map<SupplyDTO>(await supplyRepository.Update(supply));
+        var newSupply = await supplyRepository.Update(supply);
+        return mapper.Map<SupplyDTO>(newSupply);
     }
 }

@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\bucki\\source\\repos\\TestTask\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.wasm\\ui\\components\\supplyupdatemodal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|solutionrelative:enterprisewarehouse.wasm\\ui\\components\\supplyupdatemodal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.wasm\\ui\\components\\supplycreatemodal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|solutionrelative:enterprisewarehouse.wasm\\ui\\components\\supplycreatemodal.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\services\\supplyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\services\\supplyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\services\\cellservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\services\\cellservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\mapper\\mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\mapper\\mapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\controllers\\organizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\controllers\\organizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\controllers\\querycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\controllers\\querycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.wasm\\ui\\components\\organizationdatagrid.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F10D04B3-CA38-4952-93DA-9F722995C018}|EnterpriseWarehouse.Wasm\\EnterpriseWarehouse.Wasm.csproj|solutionrelative:enterprisewarehouse.wasm\\ui\\components\\organizationdatagrid.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\services\\queryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\services\\queryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|c:\\users\\bucki\\source\\repos\\testtask\\enterprisewarehouse.api\\dto\\celldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BADF574A-4C8F-4D94-BFB7-F8C2F1E039E0}|EnterpriseWarehouse.API\\EnterpriseWarehouse.API.csproj|solutionrelative:enterprisewarehouse.api\\dto\\celldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,64 +42,81 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SupplyCreateModal.razor",
+              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\Ui\\Components\\SupplyCreateModal.razor",
+              "RelativeDocumentMoniker": "EnterpriseWarehouse.Wasm\\Ui\\Components\\SupplyCreateModal.razor",
+              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\Ui\\Components\\SupplyCreateModal.razor",
+              "RelativeToolTip": "EnterpriseWarehouse.Wasm\\Ui\\Components\\SupplyCreateModal.razor",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAFUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-21T12:02:18.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SupplyUpdateModal.razor",
+              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\Ui\\Components\\SupplyUpdateModal.razor",
+              "RelativeDocumentMoniker": "EnterpriseWarehouse.Wasm\\Ui\\Components\\SupplyUpdateModal.razor",
+              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\Ui\\Components\\SupplyUpdateModal.razor",
+              "RelativeToolTip": "EnterpriseWarehouse.Wasm\\Ui\\Components\\SupplyUpdateModal.razor",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAFoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-21T12:02:18.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SupplyService.cs",
+              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\SupplyService.cs",
+              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Services\\SupplyService.cs",
+              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\SupplyService.cs",
+              "RelativeToolTip": "EnterpriseWarehouse.API\\Services\\SupplyService.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAkwDIAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T11:54:38.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CellDTO.cs",
+              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\DTO\\CellDTO.cs",
+              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\DTO\\CellDTO.cs",
+              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\DTO\\CellDTO.cs",
+              "RelativeToolTip": "EnterpriseWarehouse.API\\DTO\\CellDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T11:46:06.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CellService.cs",
+              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\CellService.cs",
+              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Services\\CellService.cs",
+              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\CellService.cs",
+              "RelativeToolTip": "EnterpriseWarehouse.API\\Services\\CellService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T11:44:41.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Mapper.cs",
               "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Mapper\\Mapper.cs",
               "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Mapper\\Mapper.cs",
               "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Mapper\\Mapper.cs",
               "RelativeToolTip": "EnterpriseWarehouse.API\\Mapper\\Mapper.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwDIAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T07:48:58.262Z",
+              "WhenOpened": "2025-03-21T11:42:49.963Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OrganizationController.cs",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Controllers\\OrganizationController.cs",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Controllers\\OrganizationController.cs",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Controllers\\OrganizationController.cs",
-              "RelativeToolTip": "EnterpriseWarehouse.API\\Controllers\\OrganizationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T07:48:23.163Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "QueryController.cs",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Controllers\\QueryController.cs",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Controllers\\QueryController.cs",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Controllers\\QueryController.cs",
-              "RelativeToolTip": "EnterpriseWarehouse.API\\Controllers\\QueryController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAYwEUAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-21T07:47:17.528Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "QueryService.cs",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\QueryService.cs",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.API\\Services\\QueryService.cs",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.API\\Services\\QueryService.cs",
-              "RelativeToolTip": "EnterpriseWarehouse.API\\Services\\QueryService.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAkwFMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T16:38:02.671Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OrganizationDataGrid.razor",
-              "DocumentMoniker": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\Ui\\Components\\OrganizationDataGrid.razor",
-              "RelativeDocumentMoniker": "EnterpriseWarehouse.Wasm\\Ui\\Components\\OrganizationDataGrid.razor",
-              "ToolTip": "C:\\Users\\bucki\\source\\repos\\TestTask\\EnterpriseWarehouse.Wasm\\Ui\\Components\\OrganizationDataGrid.razor",
-              "RelativeToolTip": "EnterpriseWarehouse.Wasm\\Ui\\Components\\OrganizationDataGrid.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-20T16:22:51.75Z"
             }
           ]
         },
