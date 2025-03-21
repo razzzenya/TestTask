@@ -1,5 +1,8 @@
 # Visual Studio 2015/2017 cache/options directory
 .vs/
-**/obj/
-**/bin/
-**/logs/
+EnterpriseWarehouse.API/obj/
+EnterpriseWarehouse.APi/bin/
+EnterpriseWarehouse.API/logs/
+
+EnterpriseWarehouse.Domain/obj/
+EnterpriseWarehouse.Domain/bin/
